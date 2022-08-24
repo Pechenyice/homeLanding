@@ -1,6 +1,7 @@
 import { SPBIcon } from 'assets/icons';
 import { ChevronIcon } from 'assets/icons/chevron';
 import { Button, H1, H3, LandingHeading, Text } from 'components/kit';
+import { MainFiltrationTable } from '../MainFiltrationTable/MainFiltrationTable';
 import { Wrapper } from '../Wrapper/Wrapper';
 import styles from './LivingRoom.module.scss';
 
@@ -20,8 +21,7 @@ export const LivingRoom = () => {
               </div>
             </a>
           </div>
-          {/* <MainFiltration /> */}
-          {/* <MainTable /> */}
+          <MainFiltrationTable />
         </div>
       </Wrapper>
     </div>

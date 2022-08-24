@@ -8,3 +8,4 @@ export * from './common/Logos/Logos';
 export * from './common/Banner/Banner';
 export * from './common/Statistic/Statistic';
 export * from './common/LivingRoom/LivingRoom';
+export * from './common/MainFiltrationTable/MainFiltrationTable';
