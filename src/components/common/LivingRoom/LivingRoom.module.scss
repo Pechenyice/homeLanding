@@ -1,0 +1,39 @@
+.wrapper {
+  padding: 80px 0;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.links {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: .2s;
+
+  &:hover {
+    opacity: .7;
+    transition: .2s;
+  }
+}
+
+.link {
+  color: var(--blue);
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    padding: 40px 0;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    row-gap: 24px;
+  }
+}

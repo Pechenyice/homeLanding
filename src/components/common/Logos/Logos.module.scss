@@ -1,0 +1,20 @@
+.images {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .images {
+    width: 320px;
+    justify-content: space-between;
+  }
+  
+  .comitet {
+    width: 205px;
+  }
+
+  .gimc {
+    width: 105px;
+  }
+}

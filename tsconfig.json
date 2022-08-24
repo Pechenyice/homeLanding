@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "src/",
+    "paths": {
+      "api/*": [ "api/*" ],
+      "api": [ "api" ],
+      "apps/*": [ "apps/*" ],
+      "apps": [ "apps" ],
+      "assets/*": [ "assets/*" ],
+      "assets": [ "assets" ],
+      "components/*": [ "components/*" ],
+      "components": [ "components" ],
+      "contexts/*": [ "contexts/*" ],
+      "contexts": [ "contexts" ],
+      "hooks/*": [ "hooks/*" ],
+      "hooks": [ "hooks" ],
+      "pages/*": [ "pages/*" ],
+      "pages": [ "pages" ],
+      "pagesComponents/*": [ "pagesComponents/*" ],
+      "pagesComponents": [ "pagesComponents" ],
+      "types/*": [ "types/*" ],
+      "types": [ "types" ],
+      "utils/*": [ "utils/*" ],
+      "utils": [ "utils" ],
+      "constants/*": [ "constants/*" ],
+      "constants": [ "constants" ],
+    }
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,95 @@
+.wrapper {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 100px;
+  width: 100%;
+  background-color: var(--white);
+
+  & * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.flexBox {
+  width: 840px;
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 40px;
+  row-gap: 80px;
+}
+
+.statistic {
+  width: 400px; 
+}
+
+.content {
+  font-family: 'Commissioner Medium';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 78px;
+
+  color: var(--landing-blue);
+
+  margin-bottom: 32px;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+
+  .flexBox {
+    width:100%;
+    column-gap: 20px;
+    row-gap: 40px;
+    margin-top: 40px;
+  }
+
+  .statistic {
+    width: calc(50% - 10px); 
+  }
+
+  .back {
+    opacity: .5;
+  }
+
+  .content {
+    font-size: 50px;
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .flexBox {
+    width:100%;
+    column-gap: 0px;
+    row-gap: 40px;
+  }
+
+  .statistic {
+    width: 100%; 
+  }
+
+  .back {
+   display: none;
+  }
+
+  .content {
+    font-size: 64px;
+    line-height: 78px;
+    margin-bottom: 32px;
+  }
+}
