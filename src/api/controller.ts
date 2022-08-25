@@ -1,9 +1,48 @@
-import { IEntitiesListResponse } from 'types/interfaces';
+import {
+  IEntitiesListResponse,
+  IQueriesRelationsResponse,
+  IQueriesResponse,
+} from 'types/interfaces';
 import { aborts } from './aborts';
-import { DYNAMIC_API_ROUTES } from './config';
+import { API_ROUTES, DYNAMIC_API_ROUTES } from './config';
 import { safeFetch } from './wrapper';
 
 export const API = {
+  queries: {
+    fetchYears(): Promise<IQueriesResponse> {
+      const params = API_ROUTES.QUERIES_YEARS;
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.QUERIES_CATEGORIES_CONTROLLER
+      );
+    },
+    fetchCategories(category: string): Promise<IQueriesResponse> {
+      const params = DYNAMIC_API_ROUTES.QUERIES_CATEGORIES(category);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.QUERIES_CATEGORIES_CONTROLLER
+      );
+    },
+    fetchCategoriesRelations(
+      parentCategory: string,
+      childCategory: string
+    ): Promise<IQueriesRelationsResponse> {
+      const params = DYNAMIC_API_ROUTES.QUERIES_CATEGORIES_RELATIONS(
+        parentCategory,
+        childCategory
+      );
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.QUERIES_CATEGORIES_CONTROLLER
+      );
+    },
+  },
   entities: {
     getList(
       page: number,

@@ -2,6 +2,13 @@ import { EAPIMethod } from 'types/enums';
 import { API_PREFIX } from './constants';
 import { listFilter, listMapper } from './utils';
 
+export const API_ROUTES = {
+  QUERIES_YEARS: {
+    url: `${API_PREFIX}/dictionaries/jobs/reporting-periods/years`,
+    method: EAPIMethod.GET,
+  },
+};
+
 export const DYNAMIC_API_ROUTES = {
   GET_ENTITIES_LIST: (
     page: number,
@@ -22,4 +29,16 @@ export const DYNAMIC_API_ROUTES = {
       method: EAPIMethod.GET,
     };
   },
+
+  QUERIES_CATEGORIES: (category: string) => ({
+    url: `${API_PREFIX}/dictionaries/categories/${category}`,
+    method: EAPIMethod.GET,
+  }),
+  QUERIES_CATEGORIES_RELATIONS: (
+    parentCategory: string,
+    childCategory: string
+  ) => ({
+    url: `${API_PREFIX}/dictionaries/categories/${parentCategory}/${childCategory}`,
+    method: EAPIMethod.GET,
+  }),
 };

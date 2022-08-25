@@ -12,7 +12,7 @@ export const Header = () => {
 
   const redirectToSystem = () => {
     //TODO: link to system
-    window.location.assign('/#');
+    window.location.assign('/lk/profile');
   };
 
   return (

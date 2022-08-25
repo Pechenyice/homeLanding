@@ -2,6 +2,10 @@ export * from './loaders';
 export * from './profile';
 export * from './spb';
 export * from './statistic';
+export * from './search';
+export * from './eyes';
+export * from './locks';
+export * from './сhevrons';
 
 export * from './social/vk';
 export * from './social/ok';

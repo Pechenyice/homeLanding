@@ -60,16 +60,16 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'build'),
     compress: false,
-    port: 8080,
+    port: 8079,
     historyApiFallback: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8079',
         router: () => 'http://localhost:8081',
         logLevel: 'debug'
       },
       '/storage': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8079',
         router: () => 'http://localhost:8081',
         logLevel: 'debug'
       }

@@ -25,7 +25,6 @@ async function checkFileResponse(response: any) {
   throw new ApiError((await response.json()).error || 'Неизвестная ошибка');
 }
 
-/* Maybe TODO: refactor to safeFetch и safeUpload */
 export function safeFetch(
   url: string,
   method: string,

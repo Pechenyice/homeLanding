@@ -9,3 +9,6 @@ export * from './common/Banner/Banner';
 export * from './common/Statistic/Statistic';
 export * from './common/LivingRoom/LivingRoom';
 export * from './common/MainFiltrationTable/MainFiltrationTable';
+export * from './common/Search/Search';
+export * from './common/RnsuCategories/RnsuCategories';
+export * from './common/LivingRoomFiltration/LivingRoomFiltration';
