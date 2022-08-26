@@ -1,0 +1,45 @@
+.wrapper {
+  width: 100%;
+  margin-top: 60px;
+}
+
+.table {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.card {
+  width: 410px;
+}
+
+@media only screen and (max-width: 1300px) {
+  .card {
+    width: 310px;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .wrapper {
+    margin-top: 40px;
+  }
+
+  .table {
+    gap: 20px;
+  }
+
+  .card {
+    width: 330px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .table {
+    gap: 0px;
+    row-gap: 25px;
+  }
+
+  .card {
+    width: 320px;
+  }
+}

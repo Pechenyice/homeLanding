@@ -7,6 +7,7 @@ import styles from './MainFiltrationTable.module.scss';
 import { Search } from '../Search/Search';
 import { RnsuCategories } from '../RnsuCategories/RnsuCategories';
 import { LivingRoomFiltration } from '../LivingRoomFiltration/LivingRoomFiltration';
+import { LivingRoomTable } from '../LivingRoomTable/LivingRoomTable';
 
 export const MainFiltrationTable = () => {
   const [page, setPage] = useState(1);
@@ -110,7 +111,7 @@ export const MainFiltrationTable = () => {
         onSearchClick={handleSearchClick}
         onClearClick={handleClearClick}
       />
-      {/* <MainTable /> */}
+      <LivingRoomTable />
     </div>
   );
 };

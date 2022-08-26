@@ -19,3 +19,11 @@ export enum EEntity {
   CLUB = 'club',
   METHODOLOGY = 'methodology',
 }
+
+export enum EEntityTranslation {
+  PROJECT = 'Проект',
+  EDUCATION_PROGRAM = 'Дополнительное образование',
+  SOCIAL_WORK = 'Социальная работа',
+  CLUB = 'Клуб',
+  METHODOLOGY = 'Методика и технология',
+}

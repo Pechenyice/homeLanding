@@ -11,8 +11,7 @@ export const Header = () => {
   const navigate = useNavigate();
 
   const redirectToSystem = () => {
-    //TODO: link to system
-    window.location.assign('/lk/profile');
+    window.location.assign('/account/');
   };
 
   return (
