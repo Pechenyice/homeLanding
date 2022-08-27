@@ -1,0 +1,14 @@
+.wrapper {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  & * {
+    color: var(--blue);
+  }
+
+  & svg {
+    flex-shrink: 0;
+  }
+}

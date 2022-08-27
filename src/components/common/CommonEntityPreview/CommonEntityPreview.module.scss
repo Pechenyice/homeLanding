@@ -1,0 +1,43 @@
+.wrapper {
+  width: 100%;
+}
+
+.meta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+
+  &__tags {
+    flex-shrink: 0;
+    width: 200px;
+  }
+}
+
+.nextTag {
+  margin-top: 40px;
+}
+
+.gallery {
+  margin: 60px 0;
+  max-width: 568px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .meta {
+    flex-wrap: wrap;
+    gap: 24px;
+  
+    &__tags {
+      flex-shrink: 0;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .gallery {
+    margin: 24px 0;
+    max-width: 320px;
+  }
+}

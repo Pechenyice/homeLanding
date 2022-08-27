@@ -65,8 +65,6 @@ export const MainFiltrationTable = () => {
   };
 
   const handleRnsuChange = (isActive: boolean, ids: number[]) => {
-    console.log(rnsuIds);
-
     let newIds;
     if (isActive) {
       newIds = [...rnsuIds, ...ids];

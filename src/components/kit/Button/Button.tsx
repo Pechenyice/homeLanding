@@ -21,8 +21,6 @@ export const Button = (
     ...rest
   } = props;
 
-  console.log(onClick);
-
   return (
     <button
       className={combineClasses(

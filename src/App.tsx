@@ -1,3 +1,4 @@
+import { ProjectPreview } from 'pages/entities/project';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import './App.css';
@@ -12,6 +13,13 @@ function App() {
 
         <Route path="/" element={<CommonBase />}>
           <Route index element={<Main />} />
+
+          <Route path="projects">
+            {/* <Route index element={<SociotekaProjects />} /> */}
+
+            <Route path=":id" element={<ProjectPreview />} />
+            <Route path=":id/info" element={<ProjectPreview isFull />} />
+          </Route>
         </Route>
       </Routes>
     </Router>

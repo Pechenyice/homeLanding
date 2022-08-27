@@ -14,3 +14,7 @@ export * from './Select/Select';
 export * from './MultipleSelect/MultipleSelect';
 export * from './Checkbox/Checkbox';
 export * from './TextArea/TextArea';
+export * from './BackButton/BackButton';
+export * from './Tag/Tag';
+export * from './Rating/Rating';
+export * from './Link/Link';

@@ -12,3 +12,9 @@ export * from './common/MainFiltrationTable/MainFiltrationTable';
 export * from './common/Search/Search';
 export * from './common/RnsuCategories/RnsuCategories';
 export * from './common/LivingRoomFiltration/LivingRoomFiltration';
+export * from './common/CommonEntityPreview/CommonEntityPreview';
+export * from './common/Gallery/Gallery';
+export * from './common/CommonEntityInfo/CommonEntityInfo';
+export * from './common/CommonCompanyInfo/CommonCompanyInfo';
+
+export * from './entities/ProjectEntityInfo/ProjectEntityInfo';

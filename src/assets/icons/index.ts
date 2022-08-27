@@ -7,6 +7,8 @@ export * from './eyes';
 export * from './locks';
 export * from './сhevrons';
 export * from './prefab';
+export * from './stars';
+export * from './link';
 
 export * from './social/vk';
 export * from './social/ok';
