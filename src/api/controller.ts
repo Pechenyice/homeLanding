@@ -1,8 +1,12 @@
 import {
   IClubResponse,
+  IEducationResponse,
   IEntitiesListResponse,
+  IMethodologyResponse,
+  IProjectResponse,
   IQueriesRelationsResponse,
   IQueriesResponse,
+  ISocialResponse,
 } from 'types/interfaces';
 import { aborts } from './aborts';
 import { API_ROUTES, DYNAMIC_API_ROUTES } from './config';
@@ -67,6 +71,50 @@ export const API = {
   club: {
     get(id: string, isBest?: boolean): Promise<IClubResponse> {
       const params = DYNAMIC_API_ROUTES.GET_CLUB(id, isBest);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_CONTROLLER
+      );
+    },
+  },
+  project: {
+    get(id: string, isBest?: boolean): Promise<IProjectResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_PROJECT(id, isBest);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_CONTROLLER
+      );
+    },
+  },
+  education: {
+    get(id: string, isBest?: boolean): Promise<IEducationResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_EDUCATION(id, isBest);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_CONTROLLER
+      );
+    },
+  },
+  social: {
+    get(id: string, isBest?: boolean): Promise<ISocialResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_SOCIAL(id, isBest);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_CONTROLLER
+      );
+    },
+  },
+  methodology: {
+    get(id: string, isBest?: boolean): Promise<IMethodologyResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_METHODOLOGY(id, isBest);
 
       return safeFetch(
         params.url,

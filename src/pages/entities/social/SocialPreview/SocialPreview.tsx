@@ -1,29 +1,29 @@
 import { useParams } from 'react-router-dom';
 
 import {
-  ClubEntityInfo,
   CommonCompanyInfo,
   CommonEntityInfo,
   CommonEntityPreview,
   NotFound,
-  ProjectEntityInfo,
+  SocialEntityInfo,
   Wrapper,
 } from 'components';
 import { BackButton, H4 } from 'components/kit';
-import styles from './ProjectPreview.module.scss';
+import styles from './SocialPreview.module.scss';
 import { PageLoader } from 'components';
-import { useProject } from 'hooks/queries/entities/useProject';
+import { EducationEntityInfo } from 'components/entities/EducationEntityInfo/EducationEntityInfo';
+import { useSocial } from 'hooks/queries/entities/useSocial';
 
-const ENTITY_NAME = 'Проект';
+const ENTITY_NAME = 'Программа по соц. работе';
 
 type Props = {
   isFull?: boolean;
 };
 
-export const ProjectPreview = ({ isFull }: Props) => {
+export const SocialPreview = ({ isFull }: Props) => {
   const { id } = useParams();
 
-  const { apiData: entity, isLoading: isEntityLoading } = useProject(
+  const { apiData: entity, isLoading: isEntityLoading } = useSocial(
     id as string,
     !isFull
   );
@@ -56,7 +56,7 @@ export const ProjectPreview = ({ isFull }: Props) => {
       <div className={styles.content}>
         <Wrapper>
           {isFull ? (
-            <ProjectEntityInfo project={entity} />
+            <SocialEntityInfo social={entity} />
           ) : (
             <CommonEntityInfo entity={entity.primary} />
           )}

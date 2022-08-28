@@ -52,4 +52,44 @@ export const DYNAMIC_API_ROUTES = {
       method: EAPIMethod.GET,
     };
   },
+  GET_PROJECT: (id: string, isBest?: boolean) => {
+    let url = `${API_PREFIX}/users/jobs/social-projects/${
+      isBest ? 'best' : 'approved'
+    }/${id}`;
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
+  GET_EDUCATION: (id: string, isBest?: boolean) => {
+    let url = `${API_PREFIX}/users/jobs/edu-programs/${
+      isBest ? 'best' : 'approved'
+    }/${id}`;
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
+  GET_SOCIAL: (id: string, isBest?: boolean) => {
+    let url = `${API_PREFIX}/users/jobs/social-works/${
+      isBest ? 'best' : 'approved'
+    }/${id}`;
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
+  GET_METHODOLOGY: (id: string, isBest?: boolean) => {
+    let url = `${API_PREFIX}/users/jobs/methodologies/${
+      isBest ? 'best' : 'approved'
+    }/${id}`;
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
 };

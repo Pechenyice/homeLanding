@@ -1,4 +1,4 @@
-import { IClub } from './entities';
+import { IClub, IEducation, IMethodology, IProject, ISocial } from './entities';
 
 export interface IResponseError {
   error: string | null;
@@ -33,4 +33,20 @@ export interface IQueriesRelationsResponse extends IResponseError {
 
 export interface IClubResponse extends IResponseError {
   data: IClub | null;
+}
+
+export interface IProjectResponse extends IResponseError {
+  data: IProject | null;
+}
+
+export interface IEducationResponse extends IResponseError {
+  data: IEducation | null;
+}
+
+export interface ISocialResponse extends IResponseError {
+  data: ISocial | null;
+}
+
+export interface IMethodologyResponse extends IResponseError {
+  data: IMethodology | null;
 }

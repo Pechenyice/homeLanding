@@ -1,31 +1,35 @@
 import { ELoaderPalette, H2, H3, Link, Loader, Tag } from 'components/kit';
 import { useCategoriesToGroups } from 'hooks/queries/categoriesRelations/useCategoriesToGroups';
 import { useWorksKindsToWorksNames } from 'hooks/queries/categoriesRelations/useWorksKindsToWorksNames';
+import { useActivityOrganizationForms } from 'hooks/queries/useActivityOrganizationForms';
+import { useApplicationPeriods } from 'hooks/queries/useApplicationPeriods';
 import { useAttractingVolunteer } from 'hooks/queries/useAttractingVolunteer';
 import { useCategories } from 'hooks/queries/useCategories';
 import { useCircumstancesRecognitionNeed } from 'hooks/queries/useCircumstancesRecognitionNeed';
 import { useConductingClassesForm } from 'hooks/queries/useConductingClassesForm';
+import { useDirections } from 'hooks/queries/useDirections';
 import { useGosWorkNames } from 'hooks/queries/useGosWorkNames';
 import { useGroups } from 'hooks/queries/useGroups';
+import { usePrevalences } from 'hooks/queries/usePrevalences';
 import { useRealisationForCitizen } from 'hooks/queries/useRealisationForCitizen';
 import { useRealizationLevels } from 'hooks/queries/useRealizationLevels';
 import { useRnsuCategory } from 'hooks/queries/useRnsuCategory';
 import { useSocialHelpForm } from 'hooks/queries/useSocialHelpForm';
 import { useWorksKinds } from 'hooks/queries/useWorksKinds';
 import { useWorksNames } from 'hooks/queries/useWorksNames';
-import { IProject } from 'types/entities';
+import { IMethodology } from 'types/entities';
 import {
   combineClasses,
   getSelectedVocabularyLabel,
   getSelectedVocabularyLabels,
 } from 'utils/common';
-import styles from './ProjectEntityInfo.module.scss';
+import styles from './MethodologyEntityInfo.module.scss';
 
 type Props = {
-  project: IProject;
+  methodology: IMethodology;
 };
 
-export const ProjectEntityInfo = ({ project }: Props) => {
+export const MethodologyEntityInfo = ({ methodology }: Props) => {
   const {
     apiData: realisationForCitizen,
     isLoading: realisationForCitizenLoading,
@@ -98,38 +102,66 @@ export const ProjectEntityInfo = ({ project }: Props) => {
     isError: categoriesToGroupsError,
   } = useCategoriesToGroups();
 
+  const {
+    apiData: directions,
+    isLoading: directionsLoading,
+    isError: directionsError,
+  } = useDirections();
+
+  const {
+    apiData: prevalences,
+    isLoading: prevalencesLoading,
+    isError: prevalencesError,
+  } = usePrevalences();
+
+  const {
+    apiData: applicationPeriods,
+    isLoading: applicationPeriodsLoading,
+    isError: applicationPeriodsError,
+  } = useApplicationPeriods();
+
+  const {
+    apiData: activityOrganizationForms,
+    isLoading: activityOrganizationFormsLoading,
+    isError: activityOrganizationFormsError,
+  } = useActivityOrganizationForms();
+
   return (
     <div className={styles.wrapper}>
       <H2 className={styles.heading}>Сведения о практике</H2>
 
       <div className={styles.inner}>
         <Tag tag="Аннотация">
-          <H3>{project.primary.annotation}</H3>
+          <H3>{methodology.primary.annotation}</H3>
         </Tag>
         <Tag tag="Цель" className={styles.nextTag}>
-          <H3>{project.primary.purpose}</H3>
+          <H3>{methodology.primary.purpose}</H3>
         </Tag>
         <Tag tag="Задачи" className={styles.nextTag}>
-          <H3>{project.primary.objectives}</H3>
+          <H3>{methodology.primary.objectives}</H3>
         </Tag>
         <Tag
           tag="Лучшая практика по мнению руководства организации"
           className={styles.nextTag}
         >
-          <H3>{project.primary.is_best_practice ? 'Да' : 'Нет'}</H3>
+          <H3>{methodology.primary.is_best_practice ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Возможность реализации в дистанционном формате"
           className={styles.nextTag}
         >
-          <H3>{project.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
+          <H3>
+            {methodology.primary.is_remote_format_possible ? 'Да' : 'Нет'}
+          </H3>
         </Tag>
         <Tag
           tag="Практика размещена в АСИ 'Смартека'"
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}
+            {methodology.primary.is_practice_placed_in_asi_smarteka
+              ? 'Да'
+              : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Реализация для гражданина" className={styles.nextTag}>
@@ -140,7 +172,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
-                  project.primary.payment_method_id
+                  methodology.primary.payment_method_id
                 ) ?? 'Нет'}
               </H3>
             )}
@@ -151,8 +183,8 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.partnership
-              ? project.primary.partnership.description
+            {methodology.primary.partnership
+              ? methodology.primary.partnership.description
               : 'Нет'}
           </H3>
         </Tag>
@@ -167,7 +199,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
-                  project.primary.volunteer_id
+                  methodology.primary.volunteer_id
                 ) ?? 'Нет'}
               </H3>
             )}
@@ -181,7 +213,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
-                  project.primary.rnsu_category_ids
+                  methodology.primary.rnsu_category_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -195,7 +227,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   categories,
-                  project.primary.needy_category_ids
+                  methodology.primary.needy_category_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -209,7 +241,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   groups,
-                  project.primary.needy_category_target_group_ids
+                  methodology.primary.needy_category_target_group_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -226,7 +258,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
-                  project.primary.need_recognition_ids
+                  methodology.primary.need_recognition_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -239,7 +271,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
             <H3>
               {getSelectedVocabularyLabels(
                 socialHelpForm,
-                project.primary.social_service_ids
+                methodology.primary.social_service_ids
               ).join(', ')}
             </H3>
           )}
@@ -248,29 +280,97 @@ export const ProjectEntityInfo = ({ project }: Props) => {
         {
           // specific
         }
-        <Tag tag="Организатор - другая организация" className={styles.nextTag}>
+        <Tag tag="Направленность" className={styles.nextTag}>
           <H3>
-            {project.info.participant
-              ? project.info.participant.description
-              : 'Нет'}
-          </H3>
-        </Tag>
-        <Tag tag="Период реализации проекта" className={styles.nextTag}>
-          <H3>{project.info.implementation_period}</H3>
-        </Tag>
-        <Tag tag="Уровень реализации проекта" className={styles.nextTag}>
-          <H3>
-            {realizationLevelsLoading ? (
+            {directionsLoading ? (
               <Loader palette={ELoaderPalette.DARK} />
             ) : (
               <H3>
                 {getSelectedVocabularyLabel(
-                  realizationLevels,
-                  project.info.implementation_level_id
+                  directions,
+                  methodology.info.direction_id
                 ) ?? 'Нет'}
               </H3>
             )}
           </H3>
+        </Tag>
+        <Tag tag="Распространенность методики" className={styles.nextTag}>
+          <H3>
+            {prevalencesLoading ? (
+              <Loader palette={ELoaderPalette.DARK} />
+            ) : (
+              <H3>
+                {getSelectedVocabularyLabel(
+                  prevalences,
+                  methodology.info.prevalence_id
+                ) ?? 'Нет'}
+              </H3>
+            )}
+          </H3>
+        </Tag>
+        <Tag
+          tag="Автор(ы) (составитель) технологии/методики, информация о согласовании (при наличии)"
+          className={styles.nextTag}
+        >
+          <H3>{methodology.info.authors ?? 'Нет'}</H3>
+        </Tag>
+        <Tag tag="Ссылка на публикацию" className={styles.nextTag}>
+          <H3>{methodology.info.publication_link ?? 'Нет'}</H3>
+        </Tag>
+        <Tag
+          tag="Исследование эффективности или доказательности методики/технологии"
+          className={styles.nextTag}
+        >
+          <H3>{methodology.info.effectiveness_study ?? 'Нет'}</H3>
+        </Tag>
+        <Tag
+          tag="Ссылка на исследование эффективности или доказательности методики/технологии"
+          className={styles.nextTag}
+        >
+          <H3>{methodology.info.effectiveness_study_link ?? 'Нет'}</H3>
+        </Tag>
+        <Tag
+          tag="Форма организации деятельности при реализации технологии/методики"
+          className={styles.nextTag}
+        >
+          <H3>
+            {activityOrganizationFormsLoading ? (
+              <Loader palette={ELoaderPalette.DARK} />
+            ) : (
+              <H3>
+                {getSelectedVocabularyLabel(
+                  activityOrganizationForms,
+                  methodology.info.activity_organization_form_id
+                ) ?? 'Нет'}
+              </H3>
+            )}
+          </H3>
+        </Tag>
+        <Tag
+          tag="Период применения (продолжительность реализации)"
+          className={styles.nextTag}
+        >
+          <H3>
+            {applicationPeriodsLoading ? (
+              <Loader palette={ELoaderPalette.DARK} />
+            ) : (
+              <H3>
+                {getSelectedVocabularyLabel(
+                  applicationPeriods,
+                  methodology.info.application_period_id
+                ) ?? 'Нет'}
+              </H3>
+            )}
+          </H3>
+        </Tag>
+        <Tag
+          tag="Количество реализованных полных циклов"
+          className={styles.nextTag}
+        >
+          <H3>{methodology.info.realized_cycles ?? 'Нет'}</H3>
+        </Tag>
+        <Tag tag="Продолжительность одного цикла" className={styles.nextTag}>
+          <H3>{methodology.info.cycle_duration ?? 'Нет'}</H3>
         </Tag>
         <Tag tag="Виды услуг" className={styles.nextTag}>
           <H3>
@@ -280,7 +380,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   worksKinds,
-                  project.info.service_type_ids
+                  methodology.info.service_type_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -294,7 +394,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   worksNames,
-                  project.info.service_name_ids
+                  methodology.info.service_name_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -311,7 +411,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
-                  project.info.public_work_ids
+                  methodology.info.public_work_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -325,54 +425,54 @@ export const ProjectEntityInfo = ({ project }: Props) => {
 
       <div className={styles.inner}>
         <Tag tag="Основные качественные результаты">
-          <H3>{project.primary.qualitative_results}</H3>
+          <H3>{methodology.primary.qualitative_results}</H3>
         </Tag>
         <Tag tag="Социальные результаты" className={styles.nextTag}>
-          <H3>{project.primary.social_results}</H3>
+          <H3>{methodology.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{project.primary.replicability ?? 'Нет'}</H3>
+          <H3>{methodology.primary.replicability ?? 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.approbation
-              ? project.primary.approbation.description
+            {methodology.primary.approbation
+              ? methodology.primary.approbation.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие экспертного заключения" className={styles.nextTag}>
           <H3>
-            {project.primary.expert_opinion
-              ? project.primary.expert_opinion.description
+            {methodology.primary.expert_opinion
+              ? methodology.primary.expert_opinion.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие рецензии" className={styles.nextTag}>
           <H3>
-            {project.primary.comment
-              ? project.primary.comment.description
+            {methodology.primary.comment
+              ? methodology.primary.comment.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие отзыва" className={styles.nextTag}>
           <H3>
-            {project.primary.review
-              ? project.primary.review.description
+            {methodology.primary.review
+              ? methodology.primary.review.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Видео ролик" className={styles.nextTag}>
           <H3>
-            {project.primary.video ? (
+            {methodology.primary.video ? (
               <Link
-                href={project.primary.video}
+                href={methodology.primary.video}
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{project.primary.video}</H3>
+                <H3>{methodology.primary.video}</H3>
               </Link>
             ) : (
               'Нет'
@@ -383,7 +483,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           tag="Краткое описание необходимого ресурсного обеспечения"
           className={styles.nextTag}
         >
-          <H3>{project.primary.required_resources_description}</H3>
+          <H3>{methodology.primary.required_resources_description}</H3>
         </Tag>
       </div>
     </div>

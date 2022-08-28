@@ -19,4 +19,7 @@ export * from './common/CommonCompanyInfo/CommonCompanyInfo';
 export * from './common/PageLoader/PageLoader';
 
 export * from './entities/ProjectEntityInfo/ProjectEntityInfo';
+export * from './entities/EducationEntityInfo/EducationEntityInfo';
+export * from './entities/SocialEntityInfo/SocialEntityInfo';
 export * from './entities/ClubEntityInfo/ClubEntityInfo';
+export * from './entities/MethodologyEntityInfo/MethodologyEntityInfo';

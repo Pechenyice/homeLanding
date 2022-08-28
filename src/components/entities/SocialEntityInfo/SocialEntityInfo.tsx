@@ -5,27 +5,29 @@ import { useAttractingVolunteer } from 'hooks/queries/useAttractingVolunteer';
 import { useCategories } from 'hooks/queries/useCategories';
 import { useCircumstancesRecognitionNeed } from 'hooks/queries/useCircumstancesRecognitionNeed';
 import { useConductingClassesForm } from 'hooks/queries/useConductingClassesForm';
+import { useDirections } from 'hooks/queries/useDirections';
 import { useGosWorkNames } from 'hooks/queries/useGosWorkNames';
 import { useGroups } from 'hooks/queries/useGroups';
+import { useProgramTypes } from 'hooks/queries/useProgramTypes';
 import { useRealisationForCitizen } from 'hooks/queries/useRealisationForCitizen';
 import { useRealizationLevels } from 'hooks/queries/useRealizationLevels';
 import { useRnsuCategory } from 'hooks/queries/useRnsuCategory';
 import { useSocialHelpForm } from 'hooks/queries/useSocialHelpForm';
 import { useWorksKinds } from 'hooks/queries/useWorksKinds';
 import { useWorksNames } from 'hooks/queries/useWorksNames';
-import { IProject } from 'types/entities';
+import { IEducation, ISocial } from 'types/entities';
 import {
   combineClasses,
   getSelectedVocabularyLabel,
   getSelectedVocabularyLabels,
 } from 'utils/common';
-import styles from './ProjectEntityInfo.module.scss';
+import styles from './SocialEntityInfo.module.scss';
 
 type Props = {
-  project: IProject;
+  social: ISocial;
 };
 
-export const ProjectEntityInfo = ({ project }: Props) => {
+export const SocialEntityInfo = ({ social }: Props) => {
   const {
     apiData: realisationForCitizen,
     isLoading: realisationForCitizenLoading,
@@ -98,38 +100,55 @@ export const ProjectEntityInfo = ({ project }: Props) => {
     isError: categoriesToGroupsError,
   } = useCategoriesToGroups();
 
+  const {
+    apiData: directions,
+    isLoading: directionsLoading,
+    isError: directionsError,
+  } = useDirections();
+  const {
+    apiData: conductingClassesForm,
+    isLoading: conductingClassesFormLoading,
+    isError: conductingClassesFormError,
+  } = useConductingClassesForm();
+
+  const {
+    apiData: programTypes,
+    isLoading: programTypesLoading,
+    isError: programTypesError,
+  } = useProgramTypes();
+
   return (
     <div className={styles.wrapper}>
       <H2 className={styles.heading}>Сведения о практике</H2>
 
       <div className={styles.inner}>
         <Tag tag="Аннотация">
-          <H3>{project.primary.annotation}</H3>
+          <H3>{social.primary.annotation}</H3>
         </Tag>
         <Tag tag="Цель" className={styles.nextTag}>
-          <H3>{project.primary.purpose}</H3>
+          <H3>{social.primary.purpose}</H3>
         </Tag>
         <Tag tag="Задачи" className={styles.nextTag}>
-          <H3>{project.primary.objectives}</H3>
+          <H3>{social.primary.objectives}</H3>
         </Tag>
         <Tag
           tag="Лучшая практика по мнению руководства организации"
           className={styles.nextTag}
         >
-          <H3>{project.primary.is_best_practice ? 'Да' : 'Нет'}</H3>
+          <H3>{social.primary.is_best_practice ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Возможность реализации в дистанционном формате"
           className={styles.nextTag}
         >
-          <H3>{project.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
+          <H3>{social.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Практика размещена в АСИ 'Смартека'"
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}
+            {social.primary.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Реализация для гражданина" className={styles.nextTag}>
@@ -140,7 +159,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
-                  project.primary.payment_method_id
+                  social.primary.payment_method_id
                 ) ?? 'Нет'}
               </H3>
             )}
@@ -151,8 +170,8 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.partnership
-              ? project.primary.partnership.description
+            {social.primary.partnership
+              ? social.primary.partnership.description
               : 'Нет'}
           </H3>
         </Tag>
@@ -167,7 +186,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
-                  project.primary.volunteer_id
+                  social.primary.volunteer_id
                 ) ?? 'Нет'}
               </H3>
             )}
@@ -181,7 +200,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
-                  project.primary.rnsu_category_ids
+                  social.primary.rnsu_category_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -195,7 +214,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   categories,
-                  project.primary.needy_category_ids
+                  social.primary.needy_category_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -209,7 +228,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   groups,
-                  project.primary.needy_category_target_group_ids
+                  social.primary.needy_category_target_group_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -226,7 +245,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
-                  project.primary.need_recognition_ids
+                  social.primary.need_recognition_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -239,7 +258,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
             <H3>
               {getSelectedVocabularyLabels(
                 socialHelpForm,
-                project.primary.social_service_ids
+                social.primary.social_service_ids
               ).join(', ')}
             </H3>
           )}
@@ -248,29 +267,50 @@ export const ProjectEntityInfo = ({ project }: Props) => {
         {
           // specific
         }
-        <Tag tag="Организатор - другая организация" className={styles.nextTag}>
+        <Tag tag="Направленность" className={styles.nextTag}>
           <H3>
-            {project.info.participant
-              ? project.info.participant.description
-              : 'Нет'}
-          </H3>
-        </Tag>
-        <Tag tag="Период реализации проекта" className={styles.nextTag}>
-          <H3>{project.info.implementation_period}</H3>
-        </Tag>
-        <Tag tag="Уровень реализации проекта" className={styles.nextTag}>
-          <H3>
-            {realizationLevelsLoading ? (
+            {directionsLoading ? (
               <Loader palette={ELoaderPalette.DARK} />
             ) : (
               <H3>
                 {getSelectedVocabularyLabel(
-                  realizationLevels,
-                  project.info.implementation_level_id
+                  directions,
+                  social.info.direction_id
                 ) ?? 'Нет'}
               </H3>
             )}
           </H3>
+        </Tag>
+        <Tag tag="Вид программы" className={styles.nextTag}>
+          <H3>
+            {programTypesLoading ? (
+              <Loader palette={ELoaderPalette.DARK} />
+            ) : (
+              <H3>
+                {getSelectedVocabularyLabel(
+                  programTypes,
+                  social.info.program_type_id
+                ) ?? 'Нет'}
+              </H3>
+            )}
+          </H3>
+        </Tag>
+        <Tag tag="Форма проведения занятий" className={styles.nextTag}>
+          <H3>
+            {conductingClassesFormLoading ? (
+              <Loader palette={ELoaderPalette.DARK} />
+            ) : (
+              <H3>
+                {getSelectedVocabularyLabel(
+                  conductingClassesForm,
+                  social.info.conducting_classes_form_id
+                ) ?? 'Нет'}
+              </H3>
+            )}
+          </H3>
+        </Tag>
+        <Tag tag="Сроки, режим занятий" className={styles.nextTag}>
+          <H3>{social.info.dates_and_mode_of_study}</H3>
         </Tag>
         <Tag tag="Виды услуг" className={styles.nextTag}>
           <H3>
@@ -280,7 +320,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   worksKinds,
-                  project.info.service_type_ids
+                  social.info.service_type_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -294,7 +334,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   worksNames,
-                  project.info.service_name_ids
+                  social.info.service_name_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -311,7 +351,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               <H3>
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
-                  project.info.public_work_ids
+                  social.info.public_work_ids
                 ).join(', ') ?? 'Нет'}
               </H3>
             )}
@@ -325,54 +365,52 @@ export const ProjectEntityInfo = ({ project }: Props) => {
 
       <div className={styles.inner}>
         <Tag tag="Основные качественные результаты">
-          <H3>{project.primary.qualitative_results}</H3>
+          <H3>{social.primary.qualitative_results}</H3>
         </Tag>
         <Tag tag="Социальные результаты" className={styles.nextTag}>
-          <H3>{project.primary.social_results}</H3>
+          <H3>{social.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{project.primary.replicability ?? 'Нет'}</H3>
+          <H3>{social.primary.replicability ?? 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"
           className={styles.nextTag}
         >
           <H3>
-            {project.primary.approbation
-              ? project.primary.approbation.description
+            {social.primary.approbation
+              ? social.primary.approbation.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие экспертного заключения" className={styles.nextTag}>
           <H3>
-            {project.primary.expert_opinion
-              ? project.primary.expert_opinion.description
+            {social.primary.expert_opinion
+              ? social.primary.expert_opinion.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие рецензии" className={styles.nextTag}>
           <H3>
-            {project.primary.comment
-              ? project.primary.comment.description
+            {social.primary.comment
+              ? social.primary.comment.description
               : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Наличие отзыва" className={styles.nextTag}>
           <H3>
-            {project.primary.review
-              ? project.primary.review.description
-              : 'Нет'}
+            {social.primary.review ? social.primary.review.description : 'Нет'}
           </H3>
         </Tag>
         <Tag tag="Видео ролик" className={styles.nextTag}>
           <H3>
-            {project.primary.video ? (
+            {social.primary.video ? (
               <Link
-                href={project.primary.video}
+                href={social.primary.video}
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{project.primary.video}</H3>
+                <H3>{social.primary.video}</H3>
               </Link>
             ) : (
               'Нет'
@@ -383,7 +421,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           tag="Краткое описание необходимого ресурсного обеспечения"
           className={styles.nextTag}
         >
-          <H3>{project.primary.required_resources_description}</H3>
+          <H3>{social.primary.required_resources_description}</H3>
         </Tag>
       </div>
     </div>

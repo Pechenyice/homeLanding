@@ -76,6 +76,49 @@ export interface ICommonPart {
   rating: IAPIRating;
 }
 
+//project
+
+export interface IAPIProjectInfoPart {
+  participant: IAPIOptionalDescriptionResult | null;
+  implementation_period: string;
+  implementation_level_id: number;
+  public_work_ids: number[];
+  service_type_ids: number[];
+  service_name_ids: number[];
+}
+
+export interface IProject extends ICommonPart {
+  info: IAPIProjectInfoPart;
+}
+
+//education
+
+export interface IAPIEducationInfoPart {
+  direction_id: number;
+  conducting_classes_form_id: number;
+  dates_and_mode_of_study: string;
+}
+
+export interface IEducation extends ICommonPart {
+  info: IAPIEducationInfoPart;
+}
+
+//social
+
+export interface IAPISocialInfoPart {
+  program_type_id: number;
+  direction_id: number;
+  conducting_classes_form_id: number;
+  dates_and_mode_of_study: string;
+  public_work_ids: number[];
+  service_type_ids: number[];
+  service_name_ids: number[];
+}
+
+export interface ISocial extends ICommonPart {
+  info: IAPISocialInfoPart;
+}
+
 //club
 
 export interface IAPIClubInfoPart {
@@ -88,4 +131,26 @@ export interface IAPIClubInfoPart {
 
 export interface IClub extends ICommonPart {
   info: IAPIClubInfoPart;
+}
+
+//methodology
+
+export interface IAPIMethodologyInfoPart {
+  direction_id: number;
+  prevalence_id: number;
+  activity_organization_form_id: number;
+  application_period_id: number;
+  authors: string | null;
+  publication_link: string | null;
+  effectiveness_study: string | null;
+  effectiveness_study_link: string | null;
+  realized_cycles: string;
+  cycle_duration: string;
+  public_work_ids: number[];
+  service_type_ids: number[];
+  service_name_ids: number[];
+}
+
+export interface IMethodology extends ICommonPart {
+  info: IAPIMethodologyInfoPart;
 }

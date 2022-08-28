@@ -5,25 +5,25 @@ import {
   CommonCompanyInfo,
   CommonEntityInfo,
   CommonEntityPreview,
+  MethodologyEntityInfo,
   NotFound,
-  ProjectEntityInfo,
   Wrapper,
 } from 'components';
 import { BackButton, H4 } from 'components/kit';
-import styles from './ProjectPreview.module.scss';
+import styles from './MethodologiesPreview.module.scss';
 import { PageLoader } from 'components';
-import { useProject } from 'hooks/queries/entities/useProject';
+import { useMethodology } from 'hooks/queries/entities/useMethodology';
 
-const ENTITY_NAME = 'Проект';
+const ENTITY_NAME = 'Методика и технология';
 
 type Props = {
   isFull?: boolean;
 };
 
-export const ProjectPreview = ({ isFull }: Props) => {
+export const MethodologiesPreview = ({ isFull }: Props) => {
   const { id } = useParams();
 
-  const { apiData: entity, isLoading: isEntityLoading } = useProject(
+  const { apiData: entity, isLoading: isEntityLoading } = useMethodology(
     id as string,
     !isFull
   );
@@ -56,7 +56,7 @@ export const ProjectPreview = ({ isFull }: Props) => {
       <div className={styles.content}>
         <Wrapper>
           {isFull ? (
-            <ProjectEntityInfo project={entity} />
+            <MethodologyEntityInfo methodology={entity} />
           ) : (
             <CommonEntityInfo entity={entity.primary} />
           )}
