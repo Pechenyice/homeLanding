@@ -16,5 +16,7 @@ export * from './common/CommonEntityPreview/CommonEntityPreview';
 export * from './common/Gallery/Gallery';
 export * from './common/CommonEntityInfo/CommonEntityInfo';
 export * from './common/CommonCompanyInfo/CommonCompanyInfo';
+export * from './common/PageLoader/PageLoader';
 
 export * from './entities/ProjectEntityInfo/ProjectEntityInfo';
+export * from './entities/ClubEntityInfo/ClubEntityInfo';

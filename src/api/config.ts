@@ -10,6 +10,18 @@ export const API_ROUTES = {
 };
 
 export const DYNAMIC_API_ROUTES = {
+  QUERIES_CATEGORIES: (category: string) => ({
+    url: `${API_PREFIX}/dictionaries/categories/${category}`,
+    method: EAPIMethod.GET,
+  }),
+  QUERIES_CATEGORIES_RELATIONS: (
+    parentCategory: string,
+    childCategory: string
+  ) => ({
+    url: `${API_PREFIX}/dictionaries/categories/${parentCategory}/${childCategory}`,
+    method: EAPIMethod.GET,
+  }),
+
   GET_ENTITIES_LIST: (
     page: number,
     limit: number,
@@ -30,15 +42,14 @@ export const DYNAMIC_API_ROUTES = {
     };
   },
 
-  QUERIES_CATEGORIES: (category: string) => ({
-    url: `${API_PREFIX}/dictionaries/categories/${category}`,
-    method: EAPIMethod.GET,
-  }),
-  QUERIES_CATEGORIES_RELATIONS: (
-    parentCategory: string,
-    childCategory: string
-  ) => ({
-    url: `${API_PREFIX}/dictionaries/categories/${parentCategory}/${childCategory}`,
-    method: EAPIMethod.GET,
-  }),
+  GET_CLUB: (id: string, isBest?: boolean) => {
+    let url = `${API_PREFIX}/users/jobs/clubs/${
+      isBest ? 'best' : 'approved'
+    }/${id}`;
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
 };

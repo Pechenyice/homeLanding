@@ -1,5 +1,5 @@
 import { H1, Rating, Tag } from 'components/kit';
-import { IAPIFileInfo, IAPIRating } from 'types/interfaces';
+import { IAPIRating, IAPIFileInfo } from 'types/entities';
 import { Gallery } from '../Gallery/Gallery';
 import styles from './CommonEntityPreview.module.scss';
 

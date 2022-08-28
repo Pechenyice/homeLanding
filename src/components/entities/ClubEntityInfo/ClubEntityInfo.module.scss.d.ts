@@ -3,6 +3,7 @@
 interface CssExports {
   'container': string;
   'heading': string;
+  'heading__next': string;
   'inner': string;
   'nextTag': string;
   'wrapper': string;

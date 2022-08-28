@@ -4,6 +4,10 @@
 
 .heading {
   margin-bottom: 40px;
+
+  &__next {
+    margin-top: 120px;
+  }
 }
 
 .nextTag {
@@ -26,6 +30,10 @@
 @media only screen and (max-width: 1000px) {
   .heading {
     margin-bottom: 24px;
+
+    &__next {
+      margin-top: 60px;
+    }
   }
   
   .nextTag {

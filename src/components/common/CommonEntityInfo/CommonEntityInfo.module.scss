@@ -13,9 +13,14 @@
 .inner {
   width: 680px;
 
-  & * {
+  & > * {
     width: 100%;
   }
+}
+
+.container {
+  max-width: 100%;
+  width: max-content;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -32,7 +37,7 @@
   .inner {
     width: 100%;
   
-    & * {
+    & > * {
       width: 100%;
     }
   }

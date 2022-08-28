@@ -34,3 +34,21 @@ export const simpleUuid = () => {
   );
   return uuid;
 };
+
+export const getSelectedVocabularyLabels = (
+  vocabulary: ISelectValue[] | null | undefined,
+  ids: number[]
+) => {
+  return (
+    vocabulary
+      ?.filter((entry) => ids.includes(entry.id))
+      .map((entry) => entry.label) ?? []
+  );
+};
+
+export const getSelectedVocabularyLabel = (
+  vocabulary: ISelectValue[] | null | undefined,
+  id: number
+) => {
+  return vocabulary?.filter((entry) => id === entry.id)?.[0].label;
+};

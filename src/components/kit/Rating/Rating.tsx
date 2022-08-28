@@ -1,6 +1,6 @@
 import { FilledStarIcon, EmptyStarIcon } from 'assets/icons';
 import { HTMLAttributes } from 'react';
-import { IAPIRating } from 'types/interfaces';
+import { IAPIRating } from 'types/entities';
 import { EStarsColor } from 'types/enums';
 import { combineClasses } from 'utils';
 import styles from './Rating.module.scss';

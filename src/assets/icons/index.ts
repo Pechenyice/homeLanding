@@ -9,6 +9,7 @@ export * from './сhevrons';
 export * from './prefab';
 export * from './stars';
 export * from './link';
+export * from './question';
 
 export * from './social/vk';
 export * from './social/ok';

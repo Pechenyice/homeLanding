@@ -277,7 +277,6 @@ export const LivingRoomFiltration = ({
             <Input value={''} heading="Тип организации" readOnly />
           ) : (
             <Select
-              className={styles.filter}
               withUnselect
               emptyText="Все"
               unselectedText="Все"
@@ -295,7 +294,6 @@ export const LivingRoomFiltration = ({
             <Input value={''} heading="Год" readOnly />
           ) : (
             <Select
-              className={styles.filter}
               withUnselect
               emptyText="Все"
               unselectedText="Все"

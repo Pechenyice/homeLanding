@@ -1,4 +1,5 @@
 import {
+  IClubResponse,
   IEntitiesListResponse,
   IQueriesRelationsResponse,
   IQueriesResponse,
@@ -59,6 +60,18 @@ export const API = {
         params.url,
         params.method,
         aborts.ENTITIES_GET_LIST_CONTROLLER
+      );
+    },
+  },
+
+  club: {
+    get(id: string, isBest?: boolean): Promise<IClubResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_CLUB(id, isBest);
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_CONTROLLER
       );
     },
   },

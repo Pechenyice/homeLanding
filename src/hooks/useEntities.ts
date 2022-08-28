@@ -37,16 +37,13 @@ export const useEntities = () => {
           position: 'bottom-center',
         });
       } else if (e instanceof ApiError) {
-        toast(e.message, {
+        toast('Не удалось получить лучшие практики', {
           position: 'bottom-center',
         });
       }
     }
 
     if (!entities?.data) {
-      toast('Не удалось получить проекты', {
-        position: 'bottom-center',
-      });
       return;
     }
 

@@ -12,7 +12,7 @@ export const NotFound = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
-        <H1 className={styles.spacer}>404: Not Found</H1>
+        <H1 className={styles.spacer}>404: информация на найдена</H1>
         <Button className={styles.resizer} onClick={navigateToMain}>
           <Text isMedium>На главную</Text>
         </Button>

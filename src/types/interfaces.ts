@@ -1,23 +1,7 @@
+import { IClub } from './entities';
+
 export interface IResponseError {
   error: string | null;
-}
-
-export interface IAPIFileInfo {
-  file: { id: number; path: string; original_name: string };
-}
-
-export interface IAPIRating {
-  count: number;
-  fields: IAPIRatingFields;
-}
-
-export interface IAPIRatingFields {
-  is_favorite: boolean;
-  is_practice_placed_in_asi_smarteka: boolean;
-  is_has_publication: boolean;
-  is_has_approbation: boolean;
-  is_has_replicability: boolean;
-  is_has_any_review: boolean;
 }
 
 export interface IInputError {
@@ -45,4 +29,8 @@ export interface IQueriesResponse extends IResponseError {
 
 export interface IQueriesRelationsResponse extends IResponseError {
   data: ISelectRelations | null;
+}
+
+export interface IClubResponse extends IResponseError {
+  data: IClub | null;
 }
