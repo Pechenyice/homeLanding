@@ -109,7 +109,14 @@ export const MainFiltrationTable = () => {
         onSearchClick={handleSearchClick}
         onClearClick={handleClearClick}
       />
-      <LivingRoomTable />
+      <LivingRoomTable
+        data={entities.items}
+        total={entities.total}
+        page={page}
+        limit={limit}
+        isLoading={isLoading}
+        onUpdatePage={handleUpdatePage}
+      />
     </div>
   );
 };

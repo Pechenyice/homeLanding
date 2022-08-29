@@ -3,7 +3,7 @@ import { useQueryParams } from 'hooks/useQueryParams';
 import { ParsedQuery } from 'query-string';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { IEntitiesList } from 'types/interfaces';
+import { IEntitiesList } from 'types/entities';
 
 export const useEntities = () => {
   const [isLoading, setIsLoading] = useState(false);

@@ -27,7 +27,7 @@ export const DYNAMIC_API_ROUTES = {
     limit: number,
     queryParams: { [key: string]: string }
   ) => {
-    let url = `${API_PREFIX}/jobs?page=${page}&limit=${limit}&${Object.entries(
+    let url = `${API_PREFIX}/users/jobs/all/best?page=${page}&limit=${limit}&${Object.entries(
       queryParams
     )
       .filter(listFilter)

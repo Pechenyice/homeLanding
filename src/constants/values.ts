@@ -6,11 +6,11 @@ export const YES_NO_OPTIONS = [
 ];
 
 export const ENTITY_API_OPTIONS = [
-  { id: 0, label: EEntity.PROJECT },
-  { id: 1, label: EEntity.EDUCATION_PROGRAM },
-  { id: 2, label: EEntity.SOCIAL_WORK },
-  { id: 3, label: EEntity.CLUB },
-  { id: 4, label: EEntity.METHODOLOGY },
+  { id: 0, label: 'social_project' },
+  { id: 1, label: 'social_work' },
+  { id: 2, label: 'methodology' },
+  { id: 3, label: 'club' },
+  { id: 4, label: 'edu_program' },
 ];
 
 export const ENTITY_OPTIONS = [

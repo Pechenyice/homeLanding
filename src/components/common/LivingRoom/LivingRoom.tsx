@@ -9,7 +9,7 @@ export const LivingRoom = () => {
   return (
     <div className={styles.wrapper} id="main">
       <Wrapper>
-        <div className={styles.inner}>
+        <div>
           <div className={styles.header}>
             <LandingHeading>Виртуальная гостиная</LandingHeading>
             <a href="#">

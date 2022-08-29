@@ -44,6 +44,7 @@
   position: absolute;
   top: 36px;
   left: 36px;
+  max-width: 70%;
   background: var(--white);
   border-radius: 3px; 
   padding: 8px 12px;
@@ -53,6 +54,10 @@
   color: #414FEB;
 
   &__content {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: #414FEB;
   }
 }

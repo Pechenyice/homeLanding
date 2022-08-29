@@ -1,53 +1,41 @@
+import { IAPIEntitiesList } from 'types/entities';
 import { EEntity } from 'types/enums';
 import { LivingRoomCard } from '../LivingRoomCard/LivingRoomCard';
 import styles from './LivingRoomTable.module.scss';
 
-export const LivingRoomTable = () => {
+type Props = {
+  data: IAPIEntitiesList[];
+  total: number;
+  page: number;
+  limit: number;
+  isLoading: boolean;
+  onUpdatePage: (newPage: number) => void;
+};
+
+export const LivingRoomTable = ({
+  data,
+  total,
+  page,
+  limit,
+  isLoading,
+  onUpdatePage,
+}: Props) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.table}>
-        <LivingRoomCard
-          className={styles.card}
-          image={'/cdea6c379fa83106550d.png'}
-          realisation={0}
-          entity={EEntity.PROJECT}
-          name={
-            'name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов'
-          }
-          company={
-            'name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдловname фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов'
-          }
-          period={'2020'}
-        />
-        <LivingRoomCard
-          className={styles.card}
-          image={'/b7d009f7298c31724560.png'}
-          realisation={0}
-          entity={EEntity.PROJECT}
-          name={
-            'name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдловname фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдловм  name фывлфоы врлфыов рфылдв офырв олдыфрв ыфов рфы врфыд вфыловр фыдлов'
-          }
-          company={'company'}
-          period={'2020'}
-        />
-        <LivingRoomCard
-          className={styles.card}
-          image={null}
-          realisation={0}
-          entity={EEntity.PROJECT}
-          name={'name'}
-          company={'company'}
-          period={'2020'}
-        />
-        <LivingRoomCard
-          className={styles.card}
-          image={null}
-          realisation={0}
-          entity={EEntity.PROJECT}
-          name={'name'}
-          company={'company'}
-          period={'2020'}
-        />
+        {data.map((elem) => (
+          <LivingRoomCard
+            key={elem.id}
+            className={styles.card}
+            entityId={elem.id}
+            image={elem.image ? '/storage/' + elem.image : null}
+            realisation={elem.payment_id}
+            entity={elem.variant}
+            name={elem.name}
+            company={elem.company}
+            period={`${elem.year.start} - ${elem.year.end}`}
+          />
+        ))}
       </div>
     </div>
   );

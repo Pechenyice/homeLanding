@@ -1,3 +1,4 @@
+import { EEntity } from 'types/enums';
 import { ISelectRelations, ISelectValue } from 'types/interfaces';
 
 export const combineClasses = (...classes: string[]) =>
@@ -51,4 +52,24 @@ export const getSelectedVocabularyLabel = (
   id: number
 ) => {
   return vocabulary?.filter((entry) => id === entry.id)?.[0].label;
+};
+
+export const getEntity = (entity: string) => {
+  switch (entity.toLowerCase()) {
+    case 'social_project': {
+      return EEntity.PROJECT;
+    }
+    case 'edu_program': {
+      return EEntity.EDUCATION_PROGRAM;
+    }
+    case 'social_work': {
+      return EEntity.SOCIAL_WORK;
+    }
+    case 'club': {
+      return EEntity.CLUB;
+    }
+    case 'methodology': {
+      return EEntity.METHODOLOGY;
+    }
+  }
 };

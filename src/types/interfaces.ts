@@ -1,4 +1,11 @@
-import { IClub, IEducation, IMethodology, IProject, ISocial } from './entities';
+import {
+  IClub,
+  IEducation,
+  IEntitiesList,
+  IMethodology,
+  IProject,
+  ISocial,
+} from './entities';
 
 export interface IResponseError {
   error: string | null;
@@ -8,8 +15,6 @@ export interface IInputError {
   exist: boolean;
   text: string;
 }
-
-export interface IEntitiesList {}
 
 export interface IEntitiesListResponse extends IResponseError {
   data: IEntitiesList | null;

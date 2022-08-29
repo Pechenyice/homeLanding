@@ -2,21 +2,23 @@ import { PrefabIcon } from 'assets/icons';
 import { ELoaderPalette, H3, H4, Loader } from 'components/kit';
 import { useRealisationForCitizen } from 'hooks/queries/useRealisationForCitizen';
 import { HTMLAttributes } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { EEntity, EEntityTranslation } from 'types/enums';
-import { combineClasses } from 'utils/common';
+import { combineClasses, getEntity } from 'utils/common';
 import styles from './LivingRoomCard.module.scss';
 
 type Props = {
+  entityId: number;
   realisation: number;
   image: string | null | undefined;
-  //TODO: retype to API case
-  entity: any;
+  entity: string;
   name: string;
   company: string;
   period: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const LivingRoomCard = ({
+  entityId,
   realisation,
   image,
   entity,
@@ -26,14 +28,67 @@ export const LivingRoomCard = ({
   className = '',
   ...rest
 }: Props) => {
+  const navigate = useNavigate();
+
   const {
     apiData: realisationForCitizen,
     isLoading: realisationForCitizenLoading,
     isError: realisationForCitizenError,
   } = useRealisationForCitizen();
 
+  const getEntityName = () => {
+    const eEntity = getEntity(entity);
+
+    switch (eEntity) {
+      case EEntity.PROJECT: {
+        return 'Проект';
+      }
+      case EEntity.EDUCATION_PROGRAM: {
+        return 'Доп. образовательная программа';
+      }
+      case EEntity.SOCIAL_WORK: {
+        return 'Соц. работа';
+      }
+      case EEntity.CLUB: {
+        return 'Клуб';
+      }
+      case EEntity.METHODOLOGY: {
+        return 'Методика и технология';
+      }
+    }
+
+    return '';
+  };
+
+  const getEntityLink = () => {
+    const eEntity = getEntity(entity);
+
+    switch (eEntity) {
+      case EEntity.PROJECT: {
+        return `/projects/${entityId}`;
+      }
+      case EEntity.EDUCATION_PROGRAM: {
+        return `/education/${entityId}`;
+      }
+      case EEntity.SOCIAL_WORK: {
+        return `/social/${entityId}`;
+      }
+      case EEntity.CLUB: {
+        return `/clubs/${entityId}`;
+      }
+      case EEntity.METHODOLOGY: {
+        return `/methodologies/${entityId}`;
+      }
+    }
+
+    return '/#';
+  };
+
   return (
-    <div className={combineClasses(styles.wrapper, className)}>
+    <div
+      className={combineClasses(styles.wrapper, className)}
+      onClick={() => navigate(getEntityLink())}
+    >
       <div className={styles.header}>
         <div className={styles.image}>
           {image ? (
@@ -55,12 +110,7 @@ export const LivingRoomCard = ({
           )}
         </div>
         <div className={styles.entity}>
-          <H4 isMedium>
-            {
-              //TODO: retype to API case
-              entity
-            }
-          </H4>
+          <H4 isMedium>{getEntityName()}</H4>
         </div>
         <div className={styles.name}>
           <H3 isMedium>{name}</H3>

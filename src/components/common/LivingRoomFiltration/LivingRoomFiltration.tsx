@@ -32,13 +32,13 @@ type Props = {
 };
 
 const defaultState = {
-  entity: -1,
+  variant: -1,
   district_id: -1,
 
-  type_id: -1,
+  organization_type_id: -1,
   year: -1,
   social_service_ids: [],
-  realisation_id: -1,
+  payment_id: -1,
   needy_category_ids: [],
   needy_category_target_group_ids: [],
   volunteer_id: -1,
@@ -122,16 +122,18 @@ export const LivingRoomFiltration = ({
 
   const getPreparedQueryParams = () => {
     const preparedQueryParams = {
-      entity: state.entity === -1 ? undefined : state.entity,
+      variant: state.variant === -1 ? undefined : state.variant,
       district_id: state.district_id === -1 ? undefined : state.district_id,
 
-      type_id: state.type_id === -1 ? undefined : state.type_id,
+      organization_type_id:
+        state.organization_type_id === -1
+          ? undefined
+          : state.organization_type_id,
       year: state.year === -1 ? undefined : state.year,
       social_service_ids: !state.social_service_ids.length
         ? undefined
         : state.social_service_ids.join(','),
-      realisation_id:
-        state.realisation_id === -1 ? undefined : state.realisation_id,
+      payment_id: state.payment_id === -1 ? undefined : state.payment_id,
       needy_category_ids: !state.needy_category_ids.length
         ? undefined
         : state.needy_category_ids.join(','),
@@ -221,10 +223,10 @@ export const LivingRoomFiltration = ({
             withUnselect
             emptyText="Все"
             unselectedText="Все"
-            value={isNaN(+state.entity) ? -1 : +state.entity}
+            value={isNaN(+state.variant) ? -1 : +state.variant}
             options={ENTITY_OPTIONS}
             heading="Категория практики"
-            onChangeOption={bindSelectChange('entity')}
+            onChangeOption={bindSelectChange('variant')}
           />
 
           <div className={styles.filter_main}>
@@ -280,10 +282,14 @@ export const LivingRoomFiltration = ({
               withUnselect
               emptyText="Все"
               unselectedText="Все"
-              value={isNaN(+state.type_id) ? -1 : +state.type_id}
+              value={
+                isNaN(+state.organization_type_id)
+                  ? -1
+                  : +state.organization_type_id
+              }
               options={organizationTypes!}
               heading="Тип организации"
-              onChangeOption={bindSelectChange('type_id')}
+              onChangeOption={bindSelectChange('organization_type_id')}
             />
           )}
         </div>
@@ -341,10 +347,10 @@ export const LivingRoomFiltration = ({
             <Select
               emptyText="Все"
               unselectedText="Все"
-              value={isNaN(+state.realisation_id) ? -1 : +state.realisation_id}
+              value={isNaN(+state.payment_id) ? -1 : +state.payment_id}
               options={socialHelpForm!}
               heading="Реализация для гражданина"
-              onChangeOption={bindSelectChange('realisation_id')}
+              onChangeOption={bindSelectChange('payment_id')}
             />
           )}
         </div>

@@ -1,3 +1,17 @@
+export interface IAPIEntitiesList {
+  id: number;
+  variant: string;
+  payment_id: number;
+  name: string;
+  company: string;
+  year: IMinMaxPart;
+  image: IAPIFileInfo['file']['path'] | null;
+}
+export interface IEntitiesList {
+  items: IAPIEntitiesList[];
+  total: number;
+}
+
 export interface IAPIFileInfo {
   file: { id: number; path: string; original_name: string };
 }
