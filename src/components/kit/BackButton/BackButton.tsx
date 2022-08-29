@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { Text } from '../Text/Text';
 import styles from './BackButton.module.scss';
 
-export const BackButton: FC<HTMLAttributes<HTMLDivElement>> = () => {
+type Props = {
+  text?: string;
+} & HTMLAttributes<HTMLDivElement>;
+
+export const BackButton: FC<Props> = ({ text }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -14,7 +18,7 @@ export const BackButton: FC<HTMLAttributes<HTMLDivElement>> = () => {
   return (
     <div onClick={handleBack} className={styles.wrapper}>
       <ChevronLeftIcon fill="#414FEB" />
-      <Text isMedium>Назад</Text>
+      <Text isMedium>{text || 'Назад'}</Text>
     </div>
   );
 };

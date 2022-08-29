@@ -10,11 +10,13 @@ type Props = {
   placeholder?: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onSearchClick: () => void;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const Search = ({
   value,
   onChange,
+  onSearchClick,
   className,
   placeholder = 'Введите текст',
 }: Props) => {
@@ -27,7 +29,7 @@ export const Search = ({
         className={styles.input}
         placeholder={placeholder}
       />
-      <Button palette="blue" className={styles.button}>
+      <Button palette="blue" className={styles.button} onClick={onSearchClick}>
         <Text isMedium>Найти</Text>
       </Button>
     </div>

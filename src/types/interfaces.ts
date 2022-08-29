@@ -1,4 +1,5 @@
 import {
+  IAPISociotekaEntitiesList,
   IClub,
   IEducation,
   IEntitiesList,
@@ -20,9 +21,19 @@ export interface IEntitiesListResponse extends IResponseError {
   data: IEntitiesList | null;
 }
 
+export interface ISociotekaEntitiesListResponse extends IResponseError {
+  data: IAPISociotekaEntitiesList | null;
+}
+
 export interface ISelectValue {
   id: number;
   label: string;
+}
+
+export interface IRnsuFilter {
+  label: string;
+  image_path: string;
+  rnsu_ids: number[];
 }
 export interface ISelectRelations {
   [key: string]: number[];
@@ -30,6 +41,10 @@ export interface ISelectRelations {
 
 export interface IQueriesResponse extends IResponseError {
   data: ISelectValue[] | null;
+}
+
+export interface IRnsuFiltersResponse extends IResponseError {
+  data: IRnsuFilter[] | null;
 }
 
 export interface IQueriesRelationsResponse extends IResponseError {

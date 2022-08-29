@@ -18,3 +18,4 @@ export * from './BackButton/BackButton';
 export * from './Tag/Tag';
 export * from './Rating/Rating';
 export * from './Link/Link';
+export * from './Status/Status';

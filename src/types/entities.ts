@@ -7,9 +7,23 @@ export interface IAPIEntitiesList {
   year: IMinMaxPart;
   image: IAPIFileInfo['file']['path'] | null;
 }
+
 export interface IEntitiesList {
   items: IAPIEntitiesList[];
   total: number;
+}
+
+export interface IAPISociotekaEntitiesList {
+  items: IAPISociotekaEntitiesListElement[];
+  total: number;
+}
+
+export interface IAPISociotekaEntitiesListElement {
+  id: number;
+  name: string;
+  annotation: number;
+  company_name: string;
+  rating: IAPIRating;
 }
 
 export interface IAPIFileInfo {

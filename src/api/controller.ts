@@ -1,3 +1,4 @@
+import { EEntity } from 'types/enums';
 import {
   IClubResponse,
   IEducationResponse,
@@ -6,7 +7,9 @@ import {
   IProjectResponse,
   IQueriesRelationsResponse,
   IQueriesResponse,
+  IRnsuFiltersResponse,
   ISocialResponse,
+  ISociotekaEntitiesListResponse,
 } from 'types/interfaces';
 import { aborts } from './aborts';
 import { API_ROUTES, DYNAMIC_API_ROUTES } from './config';
@@ -16,6 +19,15 @@ export const API = {
   queries: {
     fetchYears(): Promise<IQueriesResponse> {
       const params = API_ROUTES.QUERIES_YEARS;
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.QUERIES_CATEGORIES_CONTROLLER
+      );
+    },
+    fetchRnsuFilters(): Promise<IRnsuFiltersResponse> {
+      const params = API_ROUTES.QUERIES_RNSU_FILTERS;
 
       return safeFetch(
         params.url,
@@ -55,6 +67,27 @@ export const API = {
       queryParams: { [key: string]: string }
     ): Promise<IEntitiesListResponse> {
       const params = DYNAMIC_API_ROUTES.GET_ENTITIES_LIST(
+        page,
+        limit,
+        queryParams
+      );
+
+      return safeFetch(
+        params.url,
+        params.method,
+        aborts.ENTITIES_GET_LIST_CONTROLLER
+      );
+    },
+  },
+  socioteka: {
+    getList(
+      entity: EEntity,
+      page: number,
+      limit: number,
+      queryParams: { [key: string]: string }
+    ): Promise<ISociotekaEntitiesListResponse> {
+      const params = DYNAMIC_API_ROUTES.GET_SOCIOTEKA_ENTITIES_LIST(
+        entity,
         page,
         limit,
         queryParams

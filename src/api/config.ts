@@ -1,10 +1,15 @@
-import { EAPIMethod } from 'types/enums';
+import { EAPIMethod, EEntity } from 'types/enums';
+import { getEntity } from 'utils/common';
 import { API_PREFIX } from './constants';
-import { listFilter, listMapper } from './utils';
+import { getEntityPath, listFilter, listMapper } from './utils';
 
 export const API_ROUTES = {
   QUERIES_YEARS: {
     url: `${API_PREFIX}/dictionaries/jobs/reporting-periods/years`,
+    method: EAPIMethod.GET,
+  },
+  QUERIES_RNSU_FILTERS: {
+    url: `${API_PREFIX}/dictionaries/categories/rnsu-category/groups`,
     method: EAPIMethod.GET,
   },
 };
@@ -30,6 +35,27 @@ export const DYNAMIC_API_ROUTES = {
     let url = `${API_PREFIX}/users/jobs/all/best?page=${page}&limit=${limit}&${Object.entries(
       queryParams
     )
+      .filter(listFilter)
+      .map(listMapper)
+      .join('&')}`;
+
+    if (url.endsWith('&')) url = url.slice(0, -1);
+
+    return {
+      url,
+      method: EAPIMethod.GET,
+    };
+  },
+
+  GET_SOCIOTEKA_ENTITIES_LIST: (
+    entity: EEntity,
+    page: number,
+    limit: number,
+    queryParams: { [key: string]: string }
+  ) => {
+    let url = `${API_PREFIX}/users/jobs/${getEntityPath(
+      entity
+    )}/approved?page=${page}&limit=${limit}&${Object.entries(queryParams)
       .filter(listFilter)
       .map(listMapper)
       .join('&')}`;

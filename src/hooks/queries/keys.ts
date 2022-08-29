@@ -18,6 +18,8 @@ export const prevalencesKey = 'prevalence';
 export const applicationPeriodsKey = 'application-period';
 export const activityOrganizationFormsKey = 'activity-organization-form';
 
+export const rnsuFiltersKey = 'rnsuFilters';
+
 export const getEntitiesYearsKey = 'entitiesYears';
 
 export const getProjectKey = (id: string, isBest?: boolean) => [

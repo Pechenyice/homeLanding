@@ -80,6 +80,12 @@ export const MainFiltrationTable = () => {
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);
+
+    if (page === 1) {
+      getEntities(page, limit, preparedQueryParams as any);
+    } else {
+      setPage(1);
+    }
   };
 
   const clearRnsu = () => {
@@ -90,6 +96,12 @@ export const MainFiltrationTable = () => {
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);
+
+    if (page === 1) {
+      getEntities(page, limit, preparedQueryParams as any);
+    } else {
+      setPage(1);
+    }
   };
 
   return (
@@ -98,6 +110,7 @@ export const MainFiltrationTable = () => {
         className={styles.search}
         value={search}
         onChange={handleSearchChange}
+        onSearchClick={handleSearchClick}
         placeholder="Поиск по наименованию"
       />
       <RnsuCategories

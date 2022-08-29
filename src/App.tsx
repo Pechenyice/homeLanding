@@ -2,6 +2,7 @@ import { ClubPreview } from 'pages/entities/club';
 import { EducationPreview } from 'pages/entities/education';
 import { MethodologiesPreview } from 'pages/entities/methodology';
 import { ProjectPreview } from 'pages/entities/project';
+import { SociotekaProjects } from 'pages/entities/project/SociotekaProjects/SociotekaProjects';
 import { SocialPreview } from 'pages/entities/social';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -20,7 +21,7 @@ function App() {
           <Route index element={<Main />} />
 
           <Route path="projects">
-            {/* <Route index element={<SociotekaProjects />} /> */}
+            <Route index element={<SociotekaProjects />} />
 
             <Route path=":id" element={<ProjectPreview />} />
             <Route path=":id/info" element={<ProjectPreview isFull />} />
