@@ -337,20 +337,20 @@ export const LivingRoomFiltration = ({
           )}
         </div>
         <div className={styles.filter}>
-          {socialHelpFormLoading ? (
+          {realisationForCitizenLoading ? (
             <Skeleton
               mode={ESkeletonMode.INPUT}
               withLoader
               heading="Реализация для гражданина"
             />
-          ) : socialHelpFormError ? (
+          ) : realisationForCitizenError ? (
             <Input value={''} heading="Реализация для гражданина" readOnly />
           ) : (
             <Select
               emptyText="Все"
               unselectedText="Все"
               value={isNaN(+state.payment_id) ? -1 : +state.payment_id}
-              options={socialHelpForm!}
+              options={realisationForCitizen!}
               heading="Реализация для гражданина"
               onChangeOption={bindSelectChange('payment_id')}
             />

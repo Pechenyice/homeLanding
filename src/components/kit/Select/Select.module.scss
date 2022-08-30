@@ -31,6 +31,12 @@
   }
 }
 
+.content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .wrapper {
   width: 100%;
   height: max-content;
@@ -56,6 +62,7 @@
 }
 
 .chevron {
+  flex-shrink: 0;
   transition: 0.2s;
 
   &_inverted {
