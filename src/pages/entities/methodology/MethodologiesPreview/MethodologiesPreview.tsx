@@ -40,7 +40,7 @@ export const MethodologiesPreview = ({ isFull }: Props) => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Wrapper>
-          <BackButton />
+          <BackButton path={isFull ? '/methodologies' : '/'} />
           <H4 isMedium className={styles.tag}>
             {ENTITY_NAME}
           </H4>

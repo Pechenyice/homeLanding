@@ -26,8 +26,12 @@ export const MainFiltrationTable = () => {
   }, [page, limit]);
 
   useEffect(() => {
-    setSearch((params.search as any) || '');
-    setRnsuIds((params.rnsu as any)?.split(',').map((id: string) => +id) || []);
+    setSearch((params.name as any) || '');
+    setRnsuIds(
+      (params.rnsu_category_group_ids as any)
+        ?.split(',')
+        .map((id: string) => +id) || []
+    );
   }, []);
 
   const handleSearchClick = () => {
@@ -41,8 +45,8 @@ export const MainFiltrationTable = () => {
   const handleClearClick = () => {
     if (page === 1) {
       getEntities(page, limit, {
-        search: params.search || undefined,
-        rnsu: params.rnsu || undefined,
+        name: params.name || undefined,
+        rnsu_category_group_ids: params.rnsu_category_group_ids || undefined,
       } as any);
     } else {
       setPage(1);
@@ -58,25 +62,25 @@ export const MainFiltrationTable = () => {
 
     let preparedQueryParams = {
       ...params,
-      search: e.target.value ? e.target.value : undefined,
+      name: e.target.value ? e.target.value : undefined,
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);
   };
 
-  const handleRnsuChange = (isActive: boolean, ids: number[]) => {
+  const handleRnsuChange = (isActive: boolean, id: number) => {
     let newIds;
     if (isActive) {
-      newIds = [...rnsuIds, ...ids];
+      newIds = [...rnsuIds, id];
       setRnsuIds(newIds);
     } else {
-      newIds = rnsuIds.filter((id) => !ids.includes(id));
+      newIds = rnsuIds.filter((rnsuId) => id !== rnsuId);
       setRnsuIds(newIds);
     }
 
     let preparedQueryParams = {
       ...params,
-      rnsu: newIds.length ? newIds.join(',') : undefined,
+      rnsu_category_group_ids: newIds.length ? newIds.join(',') : undefined,
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);
@@ -92,7 +96,7 @@ export const MainFiltrationTable = () => {
     setRnsuIds([]);
     let preparedQueryParams = {
       ...params,
-      rnsu: undefined,
+      rnsu_category_group_ids: undefined,
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);

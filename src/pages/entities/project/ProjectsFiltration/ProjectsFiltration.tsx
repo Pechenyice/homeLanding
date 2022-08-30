@@ -19,11 +19,7 @@ import {
 import styles from './ProjectsFiltration.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { combineClasses, getRelatedCategoriesOptions } from 'utils/common';
-import {
-  RATING_OPTIONS,
-  STATUS_OPTIONS,
-  YES_NO_OPTIONS,
-} from './../../../../constants/values';
+import { RATING_OPTIONS, YES_NO_OPTIONS } from './../../../../constants/values';
 import { useCategories } from 'hooks/queries/useCategories';
 import { parseFilterParams } from 'utils/parse';
 import { useGroups } from 'hooks/queries/useGroups';
@@ -48,7 +44,6 @@ type Props = {
 const defaultState = {
   //common
   district_id: -1,
-  status: -1,
   rating: -1,
   year: -1,
   is_any_review: -1,
@@ -70,11 +65,6 @@ const defaultState = {
   public_work_ids: [],
   service_name_ids: [],
   service_type_ids: [],
-};
-
-const defaultAdminState = {
-  ...defaultState,
-  company: '',
 };
 
 export const ProjectsFiltration = ({
@@ -189,7 +179,6 @@ export const ProjectsFiltration = ({
     const preparedQueryParams = {
       //common
       district_id: state.district_id === -1 ? undefined : state.district_id,
-      status: state.status === -1 ? undefined : state.status,
 
       year: state.year === -1 ? undefined : state.year,
       rating: state.rating === -1 ? undefined : state.rating,
@@ -248,7 +237,7 @@ export const ProjectsFiltration = ({
       ...preparedQueryParams,
       sortBy: params.sortBy || undefined,
       sortDirection: params.sortDirection || undefined,
-      search: params.search || undefined,
+      name: params.name || undefined,
     };
 
     return JSON.parse(JSON.stringify(withSortingPreparedQueryParams));
@@ -258,7 +247,7 @@ export const ProjectsFiltration = ({
     let queryParams = getPreparedQueryParams();
     queryParams = Object.keys(queryParams)
       .map((key) =>
-        key === 'sortBy' || key === 'sortDirection' || key === 'search'
+        key === 'sortBy' || key === 'sortDirection' || key === 'name'
           ? undefined
           : key
       )
@@ -324,6 +313,7 @@ export const ProjectsFiltration = ({
         <div className={styles.mainFiltration}>
           {districtsLoading ? (
             <Skeleton
+              wrapperClassName={styles.filter}
               mode={ESkeletonMode.INPUT}
               withLoader
               heading="Подведомственное КСП"
@@ -348,10 +338,10 @@ export const ProjectsFiltration = ({
             withUnselect
             emptyText="Все"
             unselectedText="Все"
-            value={isNaN(+state.status) ? -1 : +state.status}
-            options={STATUS_OPTIONS}
-            heading="Статус"
-            onChangeOption={bindSelectChange('status')}
+            value={isNaN(+state.rating) ? -1 : +state.rating}
+            options={RATING_OPTIONS}
+            heading="Рейтинг"
+            onChangeOption={bindSelectChange('rating')}
           />
         </div>
 
@@ -360,7 +350,7 @@ export const ProjectsFiltration = ({
             Сбросить ({notEmptyFiltersCount})
           </Text>
           <Button onClick={onSearchClick} className={styles.action}>
-            <Text isMedium>Поиск</Text>
+            <Text isMedium>Применить</Text>
           </Button>
         </div>
       </div>
@@ -378,16 +368,6 @@ export const ProjectsFiltration = ({
          *
          *
          */}
-        <Select
-          className={styles.filter}
-          withUnselect
-          emptyText="Все"
-          unselectedText="Все"
-          value={isNaN(+state.rating) ? -1 : +state.rating}
-          options={RATING_OPTIONS}
-          heading="Рейтинг"
-          onChangeOption={bindSelectChange('rating')}
-        />
         <div className={styles.filter}>
           {entitiesYearsLoading ? (
             <Skeleton mode={ESkeletonMode.INPUT} withLoader heading="Год" />

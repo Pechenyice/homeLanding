@@ -5,7 +5,7 @@ import styles from './RnsuCategories.module.scss';
 
 type Props = {
   values: number[];
-  onChange: (isActive: boolean, values: number[]) => void;
+  onChange: (isActive: boolean, value: number) => void;
   onClear: () => void;
 };
 
@@ -15,8 +15,8 @@ export const RnsuCategories = ({ values, onChange, onClear }: Props) => {
     isLoading: rnsuFiltersLoading,
   } = useRnsuFilters();
 
-  const bindChange = (isActive: boolean, ids: number[]) => () =>
-    onChange(!isActive, ids);
+  const bindChange = (isActive: boolean, id: number) => () =>
+    onChange(!isActive, id);
 
   if (rnsuFiltersLoading) {
     return (
@@ -47,15 +47,15 @@ export const RnsuCategories = ({ values, onChange, onClear }: Props) => {
         <H4>Все</H4>
       </div>
       {rnsuFilters?.map((rnsu) => {
-        const isActive = rnsu.rnsu_ids.every((id) => values.includes(id));
+        const isActive = values.includes(rnsu.id);
         return (
           <div
-            key={rnsu.rnsu_ids.join('')}
+            key={rnsu.id}
             className={combineClasses(
               styles.category,
               isActive ? styles.category_active : ''
             )}
-            onClick={bindChange(isActive, rnsu.rnsu_ids)}
+            onClick={bindChange(isActive, rnsu.id)}
           >
             <img src={rnsu.image_path} className={styles.icon} />
             <H4>{rnsu.label}</H4>

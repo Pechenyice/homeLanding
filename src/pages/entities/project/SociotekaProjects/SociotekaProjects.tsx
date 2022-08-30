@@ -24,7 +24,11 @@ export const SociotekaProjects = () => {
   const { projects, isLoading, getProjects } = useProjects();
 
   useEffect(() => {
-    setSearch((params.search as any) || '');
+    getProjects(page, limit);
+  }, [page, limit]);
+
+  useEffect(() => {
+    setSearch((params.name as any) || '');
   }, []);
 
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +36,7 @@ export const SociotekaProjects = () => {
 
     let preparedQueryParams = {
       ...params,
-      search: e.target.value ? e.target.value : undefined,
+      name: e.target.value ? e.target.value : undefined,
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);
@@ -51,7 +55,7 @@ export const SociotekaProjects = () => {
       getProjects(page, limit, {
         sortBy: params.sortBy || undefined,
         sortDirection: params.sortDirection || undefined,
-        search: params.search || undefined,
+        name: params.name || undefined,
       } as any);
     } else {
       setPage(1);
@@ -74,6 +78,7 @@ export const SociotekaProjects = () => {
       ...params,
       sortBy: newSortBy ? newSortBy : undefined,
       sortDirection: newSortDirection ? newSortDirection : undefined,
+      name: params.name || undefined,
     };
     preparedQueryParams = JSON.parse(JSON.stringify(preparedQueryParams));
     setSearchParams(preparedQueryParams as any);

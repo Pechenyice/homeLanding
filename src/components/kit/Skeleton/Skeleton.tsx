@@ -12,13 +12,21 @@ interface Props {
   mode: ESkeletonMode;
   withLoader?: boolean;
   heading?: string | ReactNode;
+  wrapperClassName?: string;
 }
 
 export const Skeleton = (props: Props & HTMLAttributes<HTMLDivElement>) => {
-  const { mode, withLoader, heading, className, ...rest } = props;
+  const {
+    mode,
+    withLoader,
+    heading,
+    className,
+    wrapperClassName = '',
+    ...rest
+  } = props;
 
   return (
-    <div className={styles.wrapper} {...rest}>
+    <div className={combineClasses(styles.wrapper, wrapperClassName)} {...rest}>
       {heading && <H3 className={styles.heading}>{heading}</H3>}
       <div
         className={combineClasses(

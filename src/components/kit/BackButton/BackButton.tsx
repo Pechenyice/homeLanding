@@ -6,13 +6,14 @@ import styles from './BackButton.module.scss';
 
 type Props = {
   text?: string;
+  path?: string;
 } & HTMLAttributes<HTMLDivElement>;
 
-export const BackButton: FC<Props> = ({ text }) => {
+export const BackButton: FC<Props> = ({ text, path }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/');
+    navigate(path || '/');
   };
 
   return (

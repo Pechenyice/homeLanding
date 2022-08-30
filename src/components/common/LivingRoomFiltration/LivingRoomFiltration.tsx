@@ -148,8 +148,8 @@ export const LivingRoomFiltration = ({
 
     const withOutsidePreparedQueryParams = {
       ...preparedQueryParams,
-      search: params.search || undefined,
-      rnsu: params.rnsu || undefined,
+      name: params.name || undefined,
+      rnsu_category_group_ids: params.rnsu_category_group_ids || undefined,
     };
 
     return JSON.parse(JSON.stringify(withOutsidePreparedQueryParams));
@@ -158,7 +158,9 @@ export const LivingRoomFiltration = ({
   const getPreparedQueryParamsKeysWithoutOutside = () => {
     let queryParams = getPreparedQueryParams();
     queryParams = Object.keys(queryParams)
-      .map((key) => (key === 'search' || key === 'rnsu' ? undefined : key))
+      .map((key) =>
+        key === 'name' || key === 'rnsu_category_group_ids' ? undefined : key
+      )
       .filter((key) => !!key);
 
     return queryParams;
@@ -335,13 +337,13 @@ export const LivingRoomFiltration = ({
           )}
         </div>
         <div className={styles.filter}>
-          {realisationForCitizenLoading ? (
+          {socialHelpFormLoading ? (
             <Skeleton
               mode={ESkeletonMode.INPUT}
               withLoader
               heading="Реализация для гражданина"
             />
-          ) : realisationForCitizenError ? (
+          ) : socialHelpFormError ? (
             <Input value={''} heading="Реализация для гражданина" readOnly />
           ) : (
             <Select

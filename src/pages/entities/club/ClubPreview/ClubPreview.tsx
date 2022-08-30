@@ -40,7 +40,7 @@ export const ClubPreview = ({ isFull }: Props) => {
     <div className={styles.wrapper}>
       <div className={styles.header}>
         <Wrapper>
-          <BackButton />
+          <BackButton path={isFull ? '/clubs' : '/'} />
           <H4 isMedium className={styles.tag}>
             {ENTITY_NAME}
           </H4>

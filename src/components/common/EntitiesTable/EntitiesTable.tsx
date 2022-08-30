@@ -142,7 +142,7 @@ export const EntitiesTable = ({
           <div
             className={combineClasses(
               withSorting ? styles.table__columnHeader_sorting : '',
-              index
+              index > 1
                 ? styles.table__columnHeader_main
                 : styles.table__columnHeader_secondary
             )}
@@ -163,12 +163,12 @@ export const EntitiesTable = ({
   const tableContent = (
     <div className={styles.table__content}>
       {data.map((row, rowIndex) => (
-        <Link className={styles.link} to={`/${entityPath}/${row.id}`}>
+        <Link className={styles.link} to={`/${entityPath}/${row.id}/info`}>
           <div className={styles.table__row} key={row.id}>
             {Object.values(COLUMNS).map((value, columnIndex) => (
               <div
                 className={
-                  columnIndex
+                  columnIndex > 1
                     ? styles.table__row_main
                     : styles.table__row_secondary
                 }

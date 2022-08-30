@@ -31,6 +31,7 @@ export interface ISelectValue {
 }
 
 export interface IRnsuFilter {
+  id: number;
   label: string;
   image_path: string;
   rnsu_ids: number[];

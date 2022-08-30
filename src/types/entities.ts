@@ -22,7 +22,7 @@ export interface IAPISociotekaEntitiesListElement {
   id: number;
   name: string;
   annotation: number;
-  company_name: string;
+  company: string;
   rating: IAPIRating;
 }
 
