@@ -125,7 +125,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           <H3>{project.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
-          tag="Практика размещена в АСИ 'Смартека'"
+          tag="Практика размещена в АСИ «Смартека»"
           className={styles.nextTag}
         >
           <H3>
@@ -240,7 +240,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 project.primary.social_service_ids
-              ).join(', ')}
+              ).join(';\n')}
             </H3>
           )}
         </Tag>
@@ -364,7 +364,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Видео ролик" className={styles.nextTag}>
+        <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>
             {project.primary.video ? (
               <Link
@@ -372,7 +372,9 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{project.primary.video}</H3>
+                <H3 className={styles.antiCapitalize}>
+                  {project.primary.video}
+                </H3>
               </Link>
             ) : (
               'Нет'

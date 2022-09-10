@@ -31,7 +31,7 @@ export const ENTITY_API_OPTIONS = [
 
 export const ENTITY_OPTIONS = [
   { id: 0, label: 'Проекты' },
-  { id: 1, label: 'Доп. общеобразовательные программы' },
+  { id: 1, label: 'Программы дополнительного образования' },
   { id: 2, label: 'Программы по социальной работе' },
   { id: 3, label: 'Клубы' },
   { id: 4, label: 'Методики и технологии' },

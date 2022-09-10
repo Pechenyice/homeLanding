@@ -12,7 +12,7 @@ export const useEducation = (id: string, isBest?: boolean) => {
       onError: (e) => {
         if (e instanceof ServerError) {
           toast(
-            'Произошла критическая ошибка при загрузке доп. образовательной программы!',
+            'Произошла критическая ошибка при загрузке программы дополнительного образования!',
             {
               position: 'bottom-center',
             }

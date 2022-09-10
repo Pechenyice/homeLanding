@@ -16,6 +16,18 @@
   & > * {
     width: 100%;
   }
+
+  & h3 {
+    white-space: pre-wrap;
+
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+}
+
+h3.antiCapitalize:first-letter {
+  text-transform: none;
 }
 
 .container {

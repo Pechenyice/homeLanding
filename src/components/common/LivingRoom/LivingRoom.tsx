@@ -12,15 +12,9 @@ export const LivingRoom = () => {
       <Wrapper>
         <div>
           <div className={styles.header}>
-            <LandingHeading>Виртуальная гостиная</LandingHeading>
-            <Link to="/projects">
-              <div className={styles.links}>
-                <Text isMedium className={styles.link}>
-                  К Профессиональной социотеке Санкт-Петербурга
-                </Text>
-                <ChevronIcon />
-              </div>
-            </Link>
+            <LandingHeading className={styles.heading}>
+              Виртуальная гостиная
+            </LandingHeading>
           </div>
           <MainFiltrationTable />
         </div>

@@ -48,7 +48,7 @@ export const CommonEntityInfo = ({ entity }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 entity.social_service_ids
-              ).join(', ')}
+              ).join(';\n')}
             </H3>
           )}
         </Tag>
@@ -119,12 +119,12 @@ export const CommonEntityInfo = ({ entity }: Props) => {
           </H3>
         </Tag>
         <Tag
-          tag="Практика размещена в АСИ 'Смартека'"
+          tag="Практика размещена в АСИ «Смартека»"
           className={styles.nextTag}
         >
           <H3>{entity.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}</H3>
         </Tag>
-        <Tag tag="Видео ролик" className={styles.nextTag}>
+        <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>
             {entity.video ? (
               <Link
@@ -132,7 +132,7 @@ export const CommonEntityInfo = ({ entity }: Props) => {
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{entity.video}</H3>
+                <H3 className={styles.antiCapitalize}>{entity.video}</H3>
               </Link>
             ) : (
               'Нет'

@@ -37,7 +37,7 @@ export const useEducations = () => {
     } catch (e) {
       if (e instanceof ServerError) {
         toast(
-          'Произошла критическая ошибка при загрузке доп. образовательных программ!',
+          'Произошла критическая ошибка при загрузке программ дополнительного образования!',
           {
             position: 'bottom-center',
           }

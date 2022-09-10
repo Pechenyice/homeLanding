@@ -10,7 +10,7 @@ type Props = {
 
 const config = [
   { id: 0, label: 'Проекты', link: '/projects' },
-  { id: 1, label: 'Доп. общеобразовательные программы', link: '/education' },
+  { id: 1, label: 'Программы дополнительного образования', link: '/education' },
   { id: 2, label: 'Методики и технологии', link: '/methodologies' },
   { id: 3, label: 'Клубы', link: '/clubs' },
   { id: 4, label: 'Программы по социальной работе', link: '/social' },

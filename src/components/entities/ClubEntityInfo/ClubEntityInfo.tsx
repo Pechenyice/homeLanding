@@ -125,7 +125,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
           <H3>{club.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
-          tag="Практика размещена в АСИ 'Смартека'"
+          tag="Практика размещена в АСИ «Смартека»"
           className={styles.nextTag}
         >
           <H3>
@@ -240,7 +240,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 club.primary.social_service_ids
-              ).join(', ')}
+              ).join(';\n')}
             </H3>
           )}
         </Tag>
@@ -353,7 +353,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
             {club.primary.review ? club.primary.review.description : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Видео ролик" className={styles.nextTag}>
+        <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>
             {club.primary.video ? (
               <Link
@@ -361,7 +361,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{club.primary.video}</H3>
+                <H3 className={styles.antiCapitalize}>{club.primary.video}</H3>
               </Link>
             ) : (
               'Нет'

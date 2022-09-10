@@ -13,7 +13,7 @@ import { PageLoader } from 'components';
 import { useEducation } from 'hooks/queries/entities/useEducation';
 import { EducationEntityInfo } from 'components/entities/EducationEntityInfo/EducationEntityInfo';
 
-const ENTITY_NAME = 'Доп. образовательная программа';
+const ENTITY_NAME = 'Программа дополнительного образования';
 
 type Props = {
   isFull?: boolean;

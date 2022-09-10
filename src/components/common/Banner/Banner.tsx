@@ -1,5 +1,6 @@
 import { SPBIcon } from 'assets/icons';
 import { Button, H1, H3, Text } from 'components/kit';
+import { Link } from 'react-router-dom';
 import { Wrapper } from '../Wrapper/Wrapper';
 import styles from './Banner.module.scss';
 
@@ -19,9 +20,11 @@ export const Banner = () => {
           </H3>
 
           <Button palette="white" className={styles.button}>
-            <a href="#main">
-              <Text isMedium>Перейти к социотеке</Text>
-            </a>
+            <Link to="/projects">
+              <Text isMedium>
+                Перейти к Профессиональной социотеке Санкт-Петербурга
+              </Text>
+            </Link>
           </Button>
 
           <SPBIcon className={styles.back} />

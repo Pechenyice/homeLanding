@@ -9,7 +9,9 @@ type Props = {
 export const CommonCompanyInfo = ({ company }: Props) => {
   return (
     <div className={styles.wrapper}>
-      <H2 className={styles.heading}>Сведения об организации</H2>
+      <H2 className={styles.heading}>
+        Сведения об организации, предоставляющей данную практику
+      </H2>
 
       <div className={styles.inner}>
         <Tag tag="Полное наименование организации">

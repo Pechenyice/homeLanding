@@ -44,7 +44,7 @@ export const LivingRoomCard = ({
         return 'Проект';
       }
       case EEntity.EDUCATION_PROGRAM: {
-        return 'Доп. образовательная программа';
+        return 'Программа дополнительного образования';
       }
       case EEntity.SOCIAL_WORK: {
         return 'Соц. работа';
@@ -129,7 +129,7 @@ export const LivingRoomCard = ({
           </H4>
         </div>
         <div className={styles.action}>
-          <H3 isMedium>Подробнее</H3>
+          <H3 isMedium>Подробнее о практике</H3>
         </div>
       </div>
     </div>

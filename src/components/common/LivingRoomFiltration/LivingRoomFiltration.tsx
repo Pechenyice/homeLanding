@@ -236,10 +236,10 @@ export const LivingRoomFiltration = ({
               <Skeleton
                 mode={ESkeletonMode.INPUT}
                 withLoader
-                heading="Подведомственное КСП"
+                heading="Подведомственность"
               />
             ) : districtsError ? (
-              <Input value={''} heading="Подведомственное КСП" readOnly />
+              <Input value={''} heading="Подведомственность" readOnly />
             ) : (
               <Select
                 withUnselect
@@ -247,7 +247,7 @@ export const LivingRoomFiltration = ({
                 unselectedText="Все"
                 value={isNaN(+state.district_id) ? -1 : +state.district_id}
                 options={districts!}
-                heading="Подведомственное КСП"
+                heading="Подведомственность"
                 onChangeOption={bindSelectChange('district_id')}
               />
             )}
@@ -428,6 +428,7 @@ export const LivingRoomFiltration = ({
             />
           ) : (
             <Select
+              withUnselect
               emptyText="Все"
               unselectedText="Все"
               value={isNaN(+state.volunteer_id) ? -1 : +state.volunteer_id}

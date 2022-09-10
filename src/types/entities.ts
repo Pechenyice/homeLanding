@@ -54,7 +54,7 @@ export interface IAPICommonPrimaryPart {
   expert_opinion: IAPIOptionalDescriptionResult | null; //Наличие экспертного заключения
   review: IAPIOptionalDescriptionResult | null; //Наличие отзыва
   comment: IAPIOptionalDescriptionResult | null; //Наличие рецензии
-  video: string | null; //Видео ролик
+  video: string | null; //Видеоролик
   required_resources_description: string; //Краткое описание необходимого ресурсного обеспечения
   photo_file: IAPIFileInfo['file'] | null; //ID файла обложки
   gallery_files: IAPIFileInfo['file'][]; //Галерея

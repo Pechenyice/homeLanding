@@ -155,7 +155,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
           </H3>
         </Tag>
         <Tag
-          tag="Практика размещена в АСИ 'Смартека'"
+          tag="Практика размещена в АСИ «Смартека»"
           className={styles.nextTag}
         >
           <H3>
@@ -272,7 +272,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 methodology.primary.social_service_ids
-              ).join(', ')}
+              ).join(';\n')}
             </H3>
           )}
         </Tag>
@@ -464,7 +464,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Видео ролик" className={styles.nextTag}>
+        <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>
             {methodology.primary.video ? (
               <Link
@@ -472,7 +472,9 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{methodology.primary.video}</H3>
+                <H3 className={styles.antiCapitalize}>
+                  {methodology.primary.video}
+                </H3>
               </Link>
             ) : (
               'Нет'

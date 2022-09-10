@@ -13,6 +13,7 @@ import { BackButton, H4 } from 'components/kit';
 import styles from './ProjectPreview.module.scss';
 import { PageLoader } from 'components';
 import { useProject } from 'hooks/queries/entities/useProject';
+import { useEffect } from 'react';
 
 const ENTITY_NAME = 'Проект';
 

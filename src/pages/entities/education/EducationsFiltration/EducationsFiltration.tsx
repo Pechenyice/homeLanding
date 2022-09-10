@@ -279,10 +279,10 @@ export const EducationsFiltration = ({
               wrapperClassName={styles.filter}
               mode={ESkeletonMode.INPUT}
               withLoader
-              heading="Подведомственное КСП"
+              heading="Подведомственность"
             />
           ) : districtsError ? (
-            <Input value={''} heading="Подведомственное КСП" readOnly />
+            <Input value={''} heading="Подведомственность" readOnly />
           ) : (
             <Select
               className={styles.filter}
@@ -291,7 +291,7 @@ export const EducationsFiltration = ({
               unselectedText="Все"
               value={isNaN(+state.district_id) ? -1 : +state.district_id}
               options={districts!}
-              heading="Подведомственное КСП"
+              heading="Подведомственность"
               onChangeOption={bindSelectChange('district_id')}
             />
           )}
@@ -313,7 +313,7 @@ export const EducationsFiltration = ({
             Сбросить ({notEmptyFiltersCount})
           </Text>
           <Button onClick={onSearchClick} className={styles.action}>
-            <Text isMedium>Поиск</Text>
+            <Text isMedium>Применить</Text>
           </Button>
         </div>
       </div>
@@ -578,7 +578,7 @@ export const EducationsFiltration = ({
               : +state.is_practice_placed_in_asi_smarteka
           }
           options={YES_NO_OPTIONS}
-          heading="Практика размещена в АСИ 'Смартека'"
+          heading="Практика размещена в АСИ «Смартека»"
           onChangeOption={bindSelectChange(
             'is_practice_placed_in_asi_smarteka'
           )}
@@ -598,6 +598,7 @@ export const EducationsFiltration = ({
             />
           ) : (
             <Select
+              withUnselect
               emptyText="Все"
               unselectedText="Все"
               value={state.volunteer_id}

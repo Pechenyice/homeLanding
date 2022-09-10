@@ -144,7 +144,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
           <H3>{social.primary.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag
-          tag="Практика размещена в АСИ 'Смартека'"
+          tag="Практика размещена в АСИ «Смартека»"
           className={styles.nextTag}
         >
           <H3>
@@ -259,7 +259,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 social.primary.social_service_ids
-              ).join(', ')}
+              ).join(';\n')}
             </H3>
           )}
         </Tag>
@@ -402,7 +402,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
             {social.primary.review ? social.primary.review.description : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Видео ролик" className={styles.nextTag}>
+        <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>
             {social.primary.video ? (
               <Link
@@ -410,7 +410,9 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 target="_blank"
                 className={styles.container}
               >
-                <H3>{social.primary.video}</H3>
+                <H3 className={styles.antiCapitalize}>
+                  {social.primary.video}
+                </H3>
               </Link>
             ) : (
               'Нет'
