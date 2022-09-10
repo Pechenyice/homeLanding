@@ -30,8 +30,12 @@
   }
 }
 
-h3.antiCapitalize:first-letter {
-  text-transform: none;
+h3.antiCapitalize {
+  word-break: break-all;
+
+  &:first-letter {
+    text-transform: none;
+  }
 }
 
 .container {
