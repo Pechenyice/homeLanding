@@ -40,7 +40,10 @@ export const CommonEntityInfo = ({ entity }: Props) => {
       <H2 className={styles.heading}>Сведения о практике</H2>
 
       <div className={styles.inner}>
-        <Tag tag="Формы социального обслуживания">
+        <Tag tag="Аннотация">
+          <H3>{entity.annotation}</H3>
+        </Tag>
+        <Tag tag="Формы социального обслуживания" className={styles.nextTag}>
           {socialHelpFormLoading ? (
             <Loader palette={ELoaderPalette.DARK} />
           ) : (
@@ -51,78 +54,6 @@ export const CommonEntityInfo = ({ entity }: Props) => {
               ).join(';\n')}
             </H3>
           )}
-        </Tag>
-        <Tag tag="Аннотация" className={styles.nextTag}>
-          <H3>{entity.annotation}</H3>
-        </Tag>
-        <Tag tag="Цель" className={styles.nextTag}>
-          <H3>{entity.purpose}</H3>
-        </Tag>
-        <Tag tag="Задачи" className={styles.nextTag}>
-          <H3>{entity.objectives}</H3>
-        </Tag>
-        <Tag tag="Реализация для гражданина" className={styles.nextTag}>
-          <H3>
-            {realisationForCitizenLoading ? (
-              <Loader palette={ELoaderPalette.DARK} />
-            ) : (
-              <H3>
-                {getSelectedVocabularyLabel(
-                  realisationForCitizen,
-                  entity.payment_method_id
-                ) ?? '-'}
-              </H3>
-            )}
-          </H3>
-        </Tag>
-        <Tag tag="Социальный результат" className={styles.nextTag}>
-          <H3>{entity.social_results}</H3>
-        </Tag>
-        <Tag
-          tag="Возможность реализации в дистанционном формате"
-          className={styles.nextTag}
-        >
-          <H3>{entity.is_remote_format_possible ? 'Да' : 'Нет'}</H3>
-        </Tag>
-        <Tag
-          tag="Привлечение добровольцев и волонтеров"
-          className={styles.nextTag}
-        >
-          <H3>
-            {attractingVolunteerLoading ? (
-              <Loader palette={ELoaderPalette.DARK} />
-            ) : (
-              <H3>
-                {getSelectedVocabularyLabel(
-                  attractingVolunteer,
-                  entity.volunteer_id
-                ) ?? '-'}
-              </H3>
-            )}
-          </H3>
-        </Tag>
-        <Tag
-          tag="Обстоятельства признания нуждаемости"
-          className={styles.nextTag}
-        >
-          <H3>
-            {circumstancesRecognitionNeedLoading ? (
-              <Loader palette={ELoaderPalette.DARK} />
-            ) : (
-              <H3>
-                {getSelectedVocabularyLabels(
-                  circumstancesRecognitionNeed,
-                  entity.need_recognition_ids
-                ).join(', ')}
-              </H3>
-            )}
-          </H3>
-        </Tag>
-        <Tag
-          tag="Практика размещена в АСИ «Смартека»"
-          className={styles.nextTag}
-        >
-          <H3>{entity.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}</H3>
         </Tag>
         <Tag tag="Видеоролик" className={styles.nextTag}>
           <H3>

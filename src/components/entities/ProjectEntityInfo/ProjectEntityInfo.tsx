@@ -26,11 +26,12 @@ type Props = {
 };
 
 export const ProjectEntityInfo = ({ project }: Props) => {
-  const {
-    apiData: realisationForCitizen,
-    isLoading: realisationForCitizenLoading,
-    isError: realisationForCitizenError,
-  } = useRealisationForCitizen();
+  //FIXME: removed because of corrections for project
+  // const {
+  //   apiData: realisationForCitizen,
+  //   isLoading: realisationForCitizenLoading,
+  //   isError: realisationForCitizenError,
+  // } = useRealisationForCitizen();
   const {
     apiData: realizationLevels,
     isLoading: realizationLevelsLoading,
@@ -132,7 +133,10 @@ export const ProjectEntityInfo = ({ project }: Props) => {
             {project.primary.is_practice_placed_in_asi_smarteka ? 'Да' : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Реализация для гражданина" className={styles.nextTag}>
+        {/* 
+          //FIXME: removed because of corrections for project
+        */}
+        {/* <Tag tag="Реализация для гражданина" className={styles.nextTag}>
           <H3>
             {realisationForCitizenLoading ? (
               <Loader palette={ELoaderPalette.DARK} />
@@ -145,7 +149,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               </H3>
             )}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}

@@ -97,7 +97,10 @@ export const LivingRoomCard = ({
             <PrefabIcon />
           )}
         </div>
-        <div className={styles.realisation}>
+        {/* 
+          //FIXME: removed because of corrections for project
+        */}
+        {/* <div className={styles.realisation}>
           {realisationForCitizenLoading ? (
             <Loader palette={ELoaderPalette.DARK} />
           ) : realisationForCitizenError ? (
@@ -108,7 +111,7 @@ export const LivingRoomCard = ({
                 ?.label ?? '-'}
             </H4>
           )}
-        </div>
+        </div> */}
         <div className={styles.entity}>
           <H4 isMedium>{getEntityName()}</H4>
         </div>

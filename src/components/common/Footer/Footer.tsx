@@ -23,16 +23,10 @@ export const Footer = () => {
               <H3 isMedium>info@semya.gugov.spb.ru</H3>
             </div>
             <div className={styles.social}>
-              <a href="#">
+              <a target="_blank" href="https://vk.com/gimc_family">
                 <SocialVkIcon />
               </a>
-              <a href="#">
-                <SocialOkIcon />
-              </a>
-              <a href="#">
-                <SocialYoutubeIcon />
-              </a>
-              <a href="#">
+              <a target="_blank" href="https://t.me/gimc_family">
                 <SocialTgIcon />
               </a>
             </div>

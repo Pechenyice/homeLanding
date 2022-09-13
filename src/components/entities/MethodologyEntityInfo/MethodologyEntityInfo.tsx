@@ -30,16 +30,12 @@ type Props = {
 };
 
 export const MethodologyEntityInfo = ({ methodology }: Props) => {
-  const {
-    apiData: realisationForCitizen,
-    isLoading: realisationForCitizenLoading,
-    isError: realisationForCitizenError,
-  } = useRealisationForCitizen();
-  const {
-    apiData: realizationLevels,
-    isLoading: realizationLevelsLoading,
-    isError: realizationLevelsError,
-  } = useRealizationLevels();
+  //FIXME: removed because of corrections for project
+  // const {
+  //   apiData: realisationForCitizen,
+  //   isLoading: realisationForCitizenLoading,
+  //   isError: realisationForCitizenError,
+  // } = useRealisationForCitizen();
 
   const {
     apiData: attractingVolunteer,
@@ -90,17 +86,6 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
     isLoading: socialHelpFormLoading,
     isError: socialHelpFormError,
   } = useSocialHelpForm();
-
-  const {
-    apiData: worksKindsToWorksNames,
-    isLoading: worksKindsToWorksNamesLoading,
-    isError: worksKindsToWorksNamesError,
-  } = useWorksKindsToWorksNames();
-  const {
-    apiData: categoriesToGroups,
-    isLoading: categoriesToGroupsLoading,
-    isError: categoriesToGroupsError,
-  } = useCategoriesToGroups();
 
   const {
     apiData: directions,
@@ -164,7 +149,10 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Реализация для гражданина" className={styles.nextTag}>
+        {/* 
+          //FIXME: removed because of corrections for project
+        */}
+        {/* <Tag tag="Реализация для гражданина" className={styles.nextTag}>
           <H3>
             {realisationForCitizenLoading ? (
               <Loader palette={ELoaderPalette.DARK} />
@@ -177,7 +165,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               </H3>
             )}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}

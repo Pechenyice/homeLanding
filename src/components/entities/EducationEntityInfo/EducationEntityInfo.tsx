@@ -27,16 +27,12 @@ type Props = {
 };
 
 export const EducationEntityInfo = ({ education }: Props) => {
-  const {
-    apiData: realisationForCitizen,
-    isLoading: realisationForCitizenLoading,
-    isError: realisationForCitizenError,
-  } = useRealisationForCitizen();
-  const {
-    apiData: realizationLevels,
-    isLoading: realizationLevelsLoading,
-    isError: realizationLevelsError,
-  } = useRealizationLevels();
+  //FIXME: removed because of corrections for project
+  // const {
+  //   apiData: realisationForCitizen,
+  //   isLoading: realisationForCitizenLoading,
+  //   isError: realisationForCitizenError,
+  // } = useRealisationForCitizen();
 
   const {
     apiData: attractingVolunteer,
@@ -61,43 +57,15 @@ export const EducationEntityInfo = ({ education }: Props) => {
   } = useGroups();
 
   const {
-    apiData: worksKinds,
-    isLoading: worksKindsLoading,
-    isError: worksKindsError,
-  } = useWorksKinds();
-  const {
-    apiData: worksNames,
-    isLoading: worksNamesLoading,
-    isError: worksNamesError,
-  } = useWorksNames();
-
-  const {
-    apiData: gosWorkNames,
-    isLoading: gosWorkNamesLoading,
-    isError: gosWorkNamesError,
-  } = useGosWorkNames();
-  const {
     apiData: circumstancesRecognitionNeed,
     isLoading: circumstancesRecognitionNeedLoading,
     isError: circumstancesRecognitionNeedError,
   } = useCircumstancesRecognitionNeed();
-
   const {
     apiData: socialHelpForm,
     isLoading: socialHelpFormLoading,
     isError: socialHelpFormError,
   } = useSocialHelpForm();
-
-  const {
-    apiData: worksKindsToWorksNames,
-    isLoading: worksKindsToWorksNamesLoading,
-    isError: worksKindsToWorksNamesError,
-  } = useWorksKindsToWorksNames();
-  const {
-    apiData: categoriesToGroups,
-    isLoading: categoriesToGroupsLoading,
-    isError: categoriesToGroupsError,
-  } = useCategoriesToGroups();
 
   const {
     apiData: directions,
@@ -146,7 +114,10 @@ export const EducationEntityInfo = ({ education }: Props) => {
               : 'Нет'}
           </H3>
         </Tag>
-        <Tag tag="Реализация для гражданина" className={styles.nextTag}>
+        {/* 
+          //FIXME: removed because of corrections for project
+        */}
+        {/* <Tag tag="Реализация для гражданина" className={styles.nextTag}>
           <H3>
             {realisationForCitizenLoading ? (
               <Loader palette={ELoaderPalette.DARK} />
@@ -159,7 +130,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
               </H3>
             )}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}
