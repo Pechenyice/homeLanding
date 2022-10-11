@@ -336,7 +336,10 @@ export const LivingRoomFiltration = ({
             />
           )}
         </div>
-        <div className={styles.filter}>
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <div className={styles.filter}>
           {realisationForCitizenLoading ? (
             <Skeleton
               mode={ESkeletonMode.INPUT}
@@ -355,7 +358,7 @@ export const LivingRoomFiltration = ({
               onChangeOption={bindSelectChange('payment_id')}
             />
           )}
-        </div>
+        </div> */}
         <div className={styles.filter}>
           {categoriesLoading ? (
             <Skeleton

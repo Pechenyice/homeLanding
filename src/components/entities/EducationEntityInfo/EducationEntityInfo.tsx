@@ -126,12 +126,15 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
                   education.primary.payment_method_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag> */}
-        <Tag
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}
         >
@@ -140,7 +143,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
               ? education.primary.partnership.description
               : 'Нет'}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Привлечение добровольцев и волонтеров"
           className={styles.nextTag}
@@ -153,7 +156,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
                   education.primary.volunteer_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -167,7 +170,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
                   education.primary.rnsu_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -181,7 +184,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabels(
                   categories,
                   education.primary.needy_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -195,7 +198,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabels(
                   groups,
                   education.primary.needy_category_target_group_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -212,7 +215,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
                   education.primary.need_recognition_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -242,7 +245,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabel(
                   directions,
                   education.info.direction_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -256,14 +259,17 @@ export const EducationEntityInfo = ({ education }: Props) => {
                 {getSelectedVocabularyLabel(
                   conductingClassesForm,
                   education.info.conducting_classes_form_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag>
-        <Tag tag="Сроки, режим занятий" className={styles.nextTag}>
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag tag="Сроки, режим занятий" className={styles.nextTag}>
           <H3>{education.info.dates_and_mode_of_study}</H3>
-        </Tag>
+        </Tag> */}
       </div>
 
       <H2 className={combineClasses(styles.heading, styles.heading__next)}>
@@ -278,7 +284,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
           <H3>{education.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{education.primary.replicability ?? 'Нет'}</H3>
+          <H3>{education.primary.replicability || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"

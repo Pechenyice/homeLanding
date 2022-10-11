@@ -145,7 +145,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
                   project.primary.payment_method_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -172,7 +172,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
                   project.primary.volunteer_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -186,7 +186,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
                   project.primary.rnsu_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -200,7 +200,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   categories,
                   project.primary.needy_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -214,7 +214,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   groups,
                   project.primary.needy_category_target_group_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -231,7 +231,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
                   project.primary.need_recognition_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -271,7 +271,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabel(
                   realizationLevels,
                   project.info.implementation_level_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -285,7 +285,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksKinds,
                   project.info.service_type_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -299,7 +299,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksNames,
                   project.info.service_name_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -316,7 +316,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
                   project.info.public_work_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -335,7 +335,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
           <H3>{project.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{project.primary.replicability ?? 'Нет'}</H3>
+          <H3>{project.primary.replicability || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"

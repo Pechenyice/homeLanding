@@ -148,12 +148,15 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
                   social.primary.payment_method_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag> */}
-        <Tag
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}
         >
@@ -162,7 +165,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
               ? social.primary.partnership.description
               : 'Нет'}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Привлечение добровольцев и волонтеров"
           className={styles.nextTag}
@@ -175,7 +178,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
                   social.primary.volunteer_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -189,7 +192,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
                   social.primary.rnsu_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -203,7 +206,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   categories,
                   social.primary.needy_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -217,7 +220,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   groups,
                   social.primary.needy_category_target_group_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -234,7 +237,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
                   social.primary.need_recognition_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -264,7 +267,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabel(
                   directions,
                   social.info.direction_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -278,7 +281,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabel(
                   programTypes,
                   social.info.program_type_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -292,14 +295,17 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabel(
                   conductingClassesForm,
                   social.info.conducting_classes_form_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag>
-        <Tag tag="Сроки, режим занятий" className={styles.nextTag}>
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag tag="Сроки, режим занятий" className={styles.nextTag}>
           <H3>{social.info.dates_and_mode_of_study}</H3>
-        </Tag>
+        </Tag> */}
         <Tag tag="Виды услуг" className={styles.nextTag}>
           <H3>
             {worksKindsLoading ? (
@@ -309,7 +315,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksKinds,
                   social.info.service_type_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -323,7 +329,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksNames,
                   social.info.service_name_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -340,7 +346,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
                   social.info.public_work_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -359,7 +365,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
           <H3>{social.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{social.primary.replicability ?? 'Нет'}</H3>
+          <H3>{social.primary.replicability || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"

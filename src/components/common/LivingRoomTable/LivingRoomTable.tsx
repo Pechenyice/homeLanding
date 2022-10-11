@@ -74,7 +74,11 @@ export const LivingRoomTable = ({
           entity={elem.variant}
           name={elem.name}
           company={elem.company}
-          period={`${elem.year.start} - ${elem.year.end}`}
+          period={
+            elem.year.start === elem.year.end
+              ? `${elem.year.start}`
+              : `${elem.year.start} - ${elem.year.end}`
+          }
         />
       ))}
     </div>

@@ -46,6 +46,7 @@ export const ProjectPreview = ({ isFull }: Props) => {
             {ENTITY_NAME}
           </H4>
           <CommonEntityPreview
+            isFull={isFull}
             name={entity.primary.name}
             image={entity.primary.photo_file}
             gallery={entity.primary.gallery_files}

@@ -39,7 +39,7 @@ export interface IAPICommonPrimaryPart {
   annotation: string; //Аннотация
   objectives: string; //Основные задачи
   purpose: string; //Цель проекта
-  payment_method_id: number; //Реализация для гражданина бесплатно/платно
+  //[Removed 12.10.2022 by clients correction] payment_method_id: number; //Реализация для гражданина бесплатно/платно
   partnership: IAPIOptionalDescriptionResult | null; //Взаимодействие, партнерство с другими организациями
   volunteer_id: number; //Привлечение добровольцев и волонтеров
   rnsu_category_ids: number[]; //Категории по РНСУ
@@ -124,7 +124,7 @@ export interface IProject extends ICommonPart {
 export interface IAPIEducationInfoPart {
   direction_id: number;
   conducting_classes_form_id: number;
-  dates_and_mode_of_study: string;
+  //[Removed 12.10.2022 by clients correction] dates_and_mode_of_study: string;
 }
 
 export interface IEducation extends ICommonPart {
@@ -137,7 +137,7 @@ export interface IAPISocialInfoPart {
   program_type_id: number;
   direction_id: number;
   conducting_classes_form_id: number;
-  dates_and_mode_of_study: string;
+  //[Removed 12.10.2022 by clients correction] dates_and_mode_of_study: string;
   public_work_ids: number[];
   service_type_ids: number[];
   service_name_ids: number[];
@@ -150,7 +150,7 @@ export interface ISocial extends ICommonPart {
 //club
 
 export interface IAPIClubInfoPart {
-  schedule: string;
+  //[Removed 12.10.2022 by clients correction] schedule: string;
   conducting_classes_form_id: number;
   public_work_ids: number[];
   service_type_ids: number[];
@@ -173,7 +173,7 @@ export interface IAPIMethodologyInfoPart {
   effectiveness_study: string | null;
   effectiveness_study_link: string | null;
   realized_cycles: string;
-  cycle_duration: string;
+  //[Removed 12.10.2022 by clients correction] cycle_duration: string;
   public_work_ids: number[];
   service_type_ids: number[];
   service_name_ids: number[];

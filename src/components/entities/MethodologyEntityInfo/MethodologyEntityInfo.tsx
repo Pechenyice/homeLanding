@@ -161,12 +161,15 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
                   methodology.primary.payment_method_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag> */}
-        <Tag
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}
         >
@@ -175,7 +178,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               ? methodology.primary.partnership.description
               : 'Нет'}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Привлечение добровольцев и волонтеров"
           className={styles.nextTag}
@@ -188,7 +191,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
                   methodology.primary.volunteer_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -202,7 +205,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
                   methodology.primary.rnsu_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -216,7 +219,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   categories,
                   methodology.primary.needy_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -230,7 +233,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   groups,
                   methodology.primary.needy_category_target_group_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -247,7 +250,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
                   methodology.primary.need_recognition_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -277,7 +280,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   directions,
                   methodology.info.direction_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -291,7 +294,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   prevalences,
                   methodology.info.prevalence_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -300,22 +303,22 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
           tag="Автор(ы) (составитель) технологии/методики, информация о согласовании (при наличии)"
           className={styles.nextTag}
         >
-          <H3>{methodology.info.authors ?? 'Нет'}</H3>
+          <H3>{methodology.info.authors || 'Нет'}</H3>
         </Tag>
         <Tag tag="Ссылка на публикацию" className={styles.nextTag}>
-          <H3>{methodology.info.publication_link ?? 'Нет'}</H3>
+          <H3>{methodology.info.publication_link || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Исследование эффективности или доказательности методики/технологии"
           className={styles.nextTag}
         >
-          <H3>{methodology.info.effectiveness_study ?? 'Нет'}</H3>
+          <H3>{methodology.info.effectiveness_study || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Ссылка на исследование эффективности или доказательности методики/технологии"
           className={styles.nextTag}
         >
-          <H3>{methodology.info.effectiveness_study_link ?? 'Нет'}</H3>
+          <H3>{methodology.info.effectiveness_study_link || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Форма организации деятельности при реализации технологии/методики"
@@ -329,7 +332,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   activityOrganizationForms,
                   methodology.info.activity_organization_form_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -346,7 +349,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabel(
                   applicationPeriods,
                   methodology.info.application_period_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -355,11 +358,14 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
           tag="Количество реализованных полных циклов"
           className={styles.nextTag}
         >
-          <H3>{methodology.info.realized_cycles ?? 'Нет'}</H3>
+          <H3>{methodology.info.realized_cycles || 'Нет'}</H3>
         </Tag>
-        <Tag tag="Продолжительность одного цикла" className={styles.nextTag}>
-          <H3>{methodology.info.cycle_duration ?? 'Нет'}</H3>
-        </Tag>
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag tag="Продолжительность одного цикла" className={styles.nextTag}>
+          <H3>{methodology.info.cycle_duration || 'Нет'}</H3>
+        </Tag> */}
         <Tag tag="Виды услуг" className={styles.nextTag}>
           <H3>
             {worksKindsLoading ? (
@@ -369,7 +375,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksKinds,
                   methodology.info.service_type_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -383,7 +389,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksNames,
                   methodology.info.service_name_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -400,7 +406,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
                   methodology.info.public_work_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -419,7 +425,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
           <H3>{methodology.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{methodology.primary.replicability ?? 'Нет'}</H3>
+          <H3>{methodology.primary.replicability || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"

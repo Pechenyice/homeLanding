@@ -134,12 +134,15 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabel(
                   realisationForCitizen,
                   club.primary.payment_method_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag> */}
-        <Tag
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag
           tag="Взаимодействие, партнерство с другими организациями"
           className={styles.nextTag}
         >
@@ -148,7 +151,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
               ? club.primary.partnership.description
               : 'Нет'}
           </H3>
-        </Tag>
+        </Tag> */}
         <Tag
           tag="Привлечение добровольцев и волонтеров"
           className={styles.nextTag}
@@ -161,7 +164,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabel(
                   attractingVolunteer,
                   club.primary.volunteer_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
@@ -175,7 +178,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   rnsuCategory,
                   club.primary.rnsu_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -189,7 +192,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   categories,
                   club.primary.needy_category_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -203,7 +206,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   groups,
                   club.primary.needy_category_target_group_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -220,7 +223,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   circumstancesRecognitionNeed,
                   club.primary.need_recognition_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -250,14 +253,17 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabel(
                   conductingClassesForm,
                   club.info.conducting_classes_form_id
-                ) ?? 'Нет'}
+                ) || 'Нет'}
               </H3>
             )}
           </H3>
         </Tag>
-        <Tag tag="График" className={styles.nextTag}>
+        {
+          //[Removed 12.10.2022 by clients correction]
+        }
+        {/* <Tag tag="График" className={styles.nextTag}>
           <H3>{club.info.schedule}</H3>
-        </Tag>
+        </Tag> */}
         <Tag tag="Виды услуг" className={styles.nextTag}>
           <H3>
             {worksKindsLoading ? (
@@ -267,7 +273,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksKinds,
                   club.info.service_type_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -281,7 +287,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   worksNames,
                   club.info.service_name_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -298,7 +304,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
                 {getSelectedVocabularyLabels(
                   gosWorkNames,
                   club.info.public_work_ids
-                ).join(', ') ?? 'Нет'}
+                ).join(', ') || 'Нет'}
               </H3>
             )}
           </H3>
@@ -317,7 +323,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
           <H3>{club.primary.social_results}</H3>
         </Tag>
         <Tag tag="Тиражируемость" className={styles.nextTag}>
-          <H3>{club.primary.replicability ?? 'Нет'}</H3>
+          <H3>{club.primary.replicability || 'Нет'}</H3>
         </Tag>
         <Tag
           tag="Апробация на инновационной площадке/в ресурсном центре"

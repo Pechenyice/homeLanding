@@ -9,6 +9,7 @@ type Props = {
   gallery?: IAPIFileInfo['file'][] | null;
   rating: IAPIRating;
   period: string;
+  isFull: boolean | undefined;
 };
 
 export const CommonEntityPreview = ({
@@ -17,6 +18,7 @@ export const CommonEntityPreview = ({
   period,
   image,
   gallery,
+  isFull,
 }: Props) => {
   const images = [
     ...(image ? [{ original: image.path, thumbnail: image.path }] : []),
@@ -33,10 +35,12 @@ export const CommonEntityPreview = ({
       <div className={styles.meta}>
         <H1>{name}</H1>
         <div className={styles.meta__tags}>
-          <Tag tag="Рейтинг">
-            <Rating stars={rating} />
-          </Tag>
-          <Tag tag="Срок реализации" className={styles.nextTag}>
+          {isFull && (
+            <Tag tag="Рейтинг">
+              <Rating stars={rating} />
+            </Tag>
+          )}
+          <Tag tag="Срок реализации" className={isFull ? styles.nextTag : ''}>
             {period}
           </Tag>
         </div>
