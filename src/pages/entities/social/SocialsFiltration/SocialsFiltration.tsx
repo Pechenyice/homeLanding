@@ -41,6 +41,8 @@ import { useWorksKindsToWorksNames } from 'hooks/queries/categoriesRelations/use
 import { useEntitiesYears } from 'hooks/queries/useEntitiesYears';
 import { useDirections } from 'hooks/queries/useDirections';
 import { useDistricts } from 'hooks/queries/useDistricts';
+import { useProgramTypes } from 'hooks/queries/useProgramTypes';
+import { useConductingClassesForm } from 'hooks/queries/useConductingClassesForm';
 
 type Props = {
   onSearchClick: () => void;
@@ -71,6 +73,10 @@ const defaultState = {
   service_name_ids: [],
   service_type_ids: [],
   direction_id: -1,
+
+  //[Added 12.10.2022 by clients correction]
+  program_type_id: -1,
+  conducting_classes_form_id: -1,
 };
 
 export const SocialsFiltration = ({
@@ -160,6 +166,18 @@ export const SocialsFiltration = ({
     isError: districtsError,
   } = useDistricts();
 
+  //[Added 12.10.2022 by clients correction]
+  const {
+    apiData: programTypes,
+    isLoading: programTypesLoading,
+    isError: programTypesError,
+  } = useProgramTypes();
+  const {
+    apiData: conductingClassesForm,
+    isLoading: conductingClassesFormLoading,
+    isError: conductingClassesFormError,
+  } = useConductingClassesForm();
+
   const [isOpened, setIsOpened] = useState(false);
 
   //default values for filtration
@@ -232,6 +250,14 @@ export const SocialsFiltration = ({
       service_type_ids: !state.service_type_ids.length
         ? undefined
         : state.service_type_ids.join(','),
+
+      //[Added 12.10.2022 by clients correction]
+      program_type_id:
+        state.program_type_id === -1 ? undefined : state.program_type_id,
+      conducting_classes_form_id:
+        state.conducting_classes_form_id === -1
+          ? undefined
+          : state.conducting_classes_form_id,
     };
 
     const withSortingPreparedQueryParams = {
@@ -724,10 +750,59 @@ export const SocialsFiltration = ({
               withUnselect
               emptyText="Все"
               unselectedText="Все"
-              value={state.volunteer_id}
+              value={isNaN(+state.volunteer_id) ? -1 : +state.volunteer_id}
               options={attractingVolunteer!}
               heading="Привлечение добровольцев/волонтеров"
               onChangeOption={bindSelectChange('volunteer_id')}
+            />
+          )}
+        </div>
+        {
+          //[Added 12.10.2022 by clients correction]
+        }
+        <div className={styles.filter}>
+          {programTypesLoading ? (
+            <Skeleton
+              mode={ESkeletonMode.INPUT}
+              withLoader
+              heading="Вид программы"
+            />
+          ) : programTypesError ? (
+            <Input value={''} heading="Вид программы" readOnly />
+          ) : (
+            <Select
+              emptyText="Все"
+              unselectedText="Все"
+              value={
+                isNaN(+state.program_type_id) ? -1 : +state.program_type_id
+              }
+              options={programTypes!}
+              heading="Вид программы"
+              onChangeOption={bindSelectChange('program_type_id')}
+            />
+          )}
+        </div>
+        <div className={styles.filter}>
+          {conductingClassesFormLoading ? (
+            <Skeleton
+              mode={ESkeletonMode.INPUT}
+              withLoader
+              heading="Форма проведения мероприятий"
+            />
+          ) : conductingClassesFormError ? (
+            <Input value={''} heading="Форма проведения мероприятий" readOnly />
+          ) : (
+            <Select
+              emptyText="Все"
+              unselectedText="Все"
+              value={
+                isNaN(+state.conducting_classes_form_id)
+                  ? -1
+                  : +state.conducting_classes_form_id
+              }
+              options={conductingClassesForm!}
+              heading="Форма проведения мероприятий"
+              onChangeOption={bindSelectChange('conducting_classes_form_id')}
             />
           )}
         </div>
