@@ -244,7 +244,7 @@ export const ProjectEntityInfo = ({ project }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 project.primary.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>

@@ -263,7 +263,7 @@ export const MethodologyEntityInfo = ({ methodology }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 methodology.primary.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>

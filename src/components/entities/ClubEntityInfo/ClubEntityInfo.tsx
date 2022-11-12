@@ -236,7 +236,7 @@ export const ClubEntityInfo = ({ club }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 club.primary.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>

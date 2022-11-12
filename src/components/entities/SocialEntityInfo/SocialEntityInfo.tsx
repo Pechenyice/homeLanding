@@ -250,7 +250,7 @@ export const SocialEntityInfo = ({ social }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 social.primary.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>

@@ -228,7 +228,7 @@ export const EducationEntityInfo = ({ education }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 education.primary.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>

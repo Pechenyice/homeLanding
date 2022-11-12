@@ -51,7 +51,7 @@ export const CommonEntityInfo = ({ entity }: Props) => {
               {getSelectedVocabularyLabels(
                 socialHelpForm,
                 entity.social_service_ids
-              ).join(';\n')}
+              ).join(';\n') || '-'}
             </H3>
           )}
         </Tag>
