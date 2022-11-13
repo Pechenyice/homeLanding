@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 2px dashed var(--blue);
+}
+
+.hint {
+  position: absolute;
+  bottom: 100%;
+  left: 0px;
+  transform: translateX(calc(-50% + 30px));
+  width: 300px;
+  max-height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: var(--hint-gray);
+  z-index: 10;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--gray);    /* color of the scroll thumb */
+    border-radius: 2px;       /* roundness of the scroll thumb */
+    border: 3px solid transparent;
+  }
+}

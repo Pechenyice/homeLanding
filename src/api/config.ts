@@ -12,6 +12,12 @@ export const API_ROUTES = {
     url: `${API_PREFIX}/dictionaries/categories/rnsu-category/groups`,
     method: EAPIMethod.GET,
   },
+
+  //TODO: update with real endpoint
+  LIBRARY_WORDS: {
+    url: `${API_PREFIX}/library/words`,
+    method: EAPIMethod.GET,
+  },
 };
 
 export const DYNAMIC_API_ROUTES = {

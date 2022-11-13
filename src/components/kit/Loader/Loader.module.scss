@@ -2,6 +2,16 @@
   width: 20px;
   height: 20px;
   animation: spin 2s linear infinite;
+
+  &_small {
+    width: 15px;
+    height: 15px;
+    animation: spin 1.5s linear infinite;
+
+    & svg {
+      transform: translateY(-2px);
+    }
+  }
 }
 
 @keyframes spin {

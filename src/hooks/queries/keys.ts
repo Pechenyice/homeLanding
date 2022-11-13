@@ -22,6 +22,8 @@ export const rnsuFiltersKey = 'rnsuFilters';
 
 export const getEntitiesYearsKey = 'entitiesYears';
 
+export const libraryWordsKey = 'libraryWords';
+
 export const getProjectKey = (id: string, isBest?: boolean) => [
   'project',
   id,

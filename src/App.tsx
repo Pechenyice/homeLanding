@@ -1,3 +1,4 @@
+import { useLibraryWords } from 'hooks/queries/library/useLibraryWords';
 import { ClubPreview } from 'pages/entities/club';
 import { SociotekaClubs } from 'pages/entities/club/SociotekaClubs/SociotekaClubs';
 import { EducationPreview } from 'pages/entities/education';
@@ -16,6 +17,9 @@ import { CommonBase, NotFound } from './components';
 import { Main } from './pages';
 
 function App() {
+  // to load library for users
+  useLibraryWords();
+
   return (
     <Router>
       <Routes>

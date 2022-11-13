@@ -3,6 +3,7 @@
 interface CssExports {
   'spin': string;
   'styled': string;
+  'styled_small': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

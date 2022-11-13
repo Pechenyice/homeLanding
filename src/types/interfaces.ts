@@ -40,8 +40,18 @@ export interface ISelectRelations {
   [key: string]: number[];
 }
 
+export interface ILibraryWord {
+  id: number;
+  word: string;
+  meaning: string;
+}
+
 export interface IQueriesResponse extends IResponseError {
   data: ISelectValue[] | null;
+}
+
+export interface ILibraryWordsResponse extends IResponseError {
+  data: ILibraryWord[] | null;
 }
 
 export interface IRnsuFiltersResponse extends IResponseError {

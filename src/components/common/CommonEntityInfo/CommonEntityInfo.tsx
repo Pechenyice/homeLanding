@@ -1,13 +1,14 @@
+import { ReactElement } from 'react';
+import { LibraryLoadingIndicator, LibraryWordEntry } from 'components';
 import { ELoaderPalette, H2, H3, Link, Loader, Tag } from 'components/kit';
+import { useLibraryWords } from 'hooks/queries/library/useLibraryWords';
 import { useAttractingVolunteer } from 'hooks/queries/useAttractingVolunteer';
 import { useCircumstancesRecognitionNeed } from 'hooks/queries/useCircumstancesRecognitionNeed';
 import { useRealisationForCitizen } from 'hooks/queries/useRealisationForCitizen';
 import { useSocialHelpForm } from 'hooks/queries/useSocialHelpForm';
+import { ReactNode, useMemo } from 'react';
 import { IAPICommonPrimaryPart } from 'types/entities';
-import {
-  getSelectedVocabularyLabel,
-  getSelectedVocabularyLabels,
-} from 'utils/common';
+import { getSelectedVocabularyLabels } from 'utils/common';
 import styles from './CommonEntityInfo.module.scss';
 
 type Props = {
@@ -15,6 +16,11 @@ type Props = {
 };
 
 export const CommonEntityInfo = ({ entity }: Props) => {
+  const {
+    apiData: libraryWords,
+    isLoading: libraryWordsLoading,
+  } = useLibraryWords();
+
   const {
     apiData: socialHelpForm,
     isLoading: socialHelpFormLoading,
@@ -35,13 +41,47 @@ export const CommonEntityInfo = ({ entity }: Props) => {
     isLoading: circumstancesRecognitionNeedLoading,
   } = useCircumstancesRecognitionNeed();
 
+  const libraryContent = useMemo(() => {
+    let content: string[] | ReactNode[] = [entity.annotation];
+
+    libraryWords?.forEach((libraryWord) => {
+      const newContent = content.map((entry) => {
+        const regexp = new RegExp('(\\b' + libraryWord.word + '\\b)');
+
+        const newEntry =
+          typeof entry !== 'string' ? entry : (entry as string).split(regexp);
+
+        return newEntry;
+      });
+
+      content = newContent.flat().map((entry) => {
+        if (entry === libraryWord.word)
+          return (
+            <LibraryWordEntry
+              word={libraryWord.word}
+              meaning={libraryWord.meaning}
+            />
+          );
+
+        return entry;
+      });
+    });
+
+    return content;
+  }, [entity.annotation, libraryWords]);
+
   return (
     <div className={styles.wrapper}>
       <H2 className={styles.heading}>Сведения о практике</H2>
 
       <div className={styles.inner}>
         <Tag tag="Аннотация">
-          <H3>{entity.annotation}</H3>
+          <div>
+            {libraryWordsLoading && <LibraryLoadingIndicator />}
+            <H3 className={styles.headingWithLoader}>
+              {libraryContent || entity.annotation}
+            </H3>
+          </div>
         </Tag>
         <Tag tag="Формы социального обслуживания" className={styles.nextTag}>
           {socialHelpFormLoading ? (

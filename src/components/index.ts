@@ -19,6 +19,8 @@ export * from './common/CommonCompanyInfo/CommonCompanyInfo';
 export * from './common/PageLoader/PageLoader';
 export * from './common/EntitiesNavigation/EntitiesNavigation';
 export * from './common/EntitiesTable/EntitiesTable';
+export * from './common/LibraryLoadingIndicator/LibraryLoadingIndicator';
+export * from './common/LibraryWordEntry/LibraryWordEntry';
 
 export * from './entities/ProjectEntityInfo/ProjectEntityInfo';
 export * from './entities/EducationEntityInfo/EducationEntityInfo';

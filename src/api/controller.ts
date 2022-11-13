@@ -3,6 +3,7 @@ import {
   IClubResponse,
   IEducationResponse,
   IEntitiesListResponse,
+  ILibraryWordsResponse,
   IMethodologyResponse,
   IProjectResponse,
   IQueriesRelationsResponse,
@@ -16,6 +17,40 @@ import { API_ROUTES, DYNAMIC_API_ROUTES } from './config';
 import { safeFetch } from './wrapper';
 
 export const API = {
+  library: {
+    fetchAllWords(): Promise<ILibraryWordsResponse> {
+      const params = API_ROUTES.LIBRARY_WORDS;
+
+      return safeFetch(params.url, params.method, aborts.LIBRARY_GET_ALL_WORDS);
+      // return new Promise((res) =>
+      //   setTimeout(() => {
+      //     res({
+      //       data: [
+      //         {
+      //           id: 122,
+      //           word: 'dolores',
+      //           meaning:
+      //             'СМОТРИ СЮДАd asdasiofhsdajfhdsfdshflksdajfsdakl fjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashf kjsdah flkjsadfh saldjkf hsadlkjf hsdalfkj hsdafkjashdf ljds fhjsdl',
+      //         },
+      //         {
+      //           id: 123,
+      //           word: 'qui',
+      //           meaning:
+      //             'СМОТРИ СЮДАd asdasiofhsdajfhdsfdshflksdajfsdakl fjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashf kjsdah flkjsadfh saldjkf hsadlkjf hsdalfkj hsdafkjashdf ljds fhjsdl',
+      //         },
+      //         {
+      //           id: 124,
+      //           word: 'quis',
+      //           meaning:
+      //             'shf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashfjdsf hsdkj jkdsfh lskdjfh kjsfh skjafhsdl kjfshafk ljashf kjashf kjsdah flkjsadfh saldjkf hsadlkjf hsdalfkj hsdafkjashdf ljds fhjsdl',
+      //         },
+      //       ],
+      //       error: null,
+      //     });
+      //   }, 2000)
+      // );
+    },
+  },
   queries: {
     fetchYears(): Promise<IQueriesResponse> {
       const params = API_ROUTES.QUERIES_YEARS;
