@@ -79,7 +79,13 @@ export const CommonEntityInfo = ({ entity }: Props) => {
           <div>
             {libraryWordsLoading && <LibraryLoadingIndicator />}
             <H3 className={styles.headingWithLoader}>
-              {libraryContent || entity.annotation}
+              <LibraryWordEntry
+                word={'asd'}
+                meaning={
+                  'testlibraryWord.meaning testlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaning testlibraryWord.meaningv testlibraryWord.meaning testlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaningvvtestlibraryWord.meaning vtestlibraryWord.meaning  testlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaningtestlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning v testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning v testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning testlibraryWord.meaning v testlibraryWord.meaning testlibraryWord.meaning'
+                }
+              />
+              {libraryContent || entity.annotation}{' '}
             </H3>
           </div>
         </Tag>
