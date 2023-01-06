@@ -1,6 +1,6 @@
 import { EAPIMethod, EEntity } from 'types/enums';
 import { getEntity } from 'utils/common';
-import { API_PREFIX } from './constants';
+import { ADMIN_API_PREFIX, API_PREFIX } from './constants';
 import { getEntityPath, listFilter, listMapper } from './utils';
 
 export const API_ROUTES = {
@@ -13,9 +13,8 @@ export const API_ROUTES = {
     method: EAPIMethod.GET,
   },
 
-  //TODO: update with real endpoint
   LIBRARY_WORDS: {
-    url: `${API_PREFIX}/library/words`,
+    url: `${ADMIN_API_PREFIX}/library`,
     method: EAPIMethod.GET,
   },
 };
