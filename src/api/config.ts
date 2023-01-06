@@ -1,6 +1,6 @@
 import { EAPIMethod, EEntity } from 'types/enums';
 import { getEntity } from 'utils/common';
-import { ADMIN_API_PREFIX, API_PREFIX } from './constants';
+import { API_PREFIX } from './constants';
 import { getEntityPath, listFilter, listMapper } from './utils';
 
 export const API_ROUTES = {
@@ -14,7 +14,7 @@ export const API_ROUTES = {
   },
 
   LIBRARY_WORDS: {
-    url: `${ADMIN_API_PREFIX}/library`,
+    url: `${API_PREFIX}/library`,
     method: EAPIMethod.GET,
   },
 };
