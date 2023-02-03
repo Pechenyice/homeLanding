@@ -42,32 +42,23 @@ export const CommonEntityInfo = ({ entity }: Props) => {
   } = useCircumstancesRecognitionNeed();
 
   const libraryContent = useMemo(() => {
-    let content: string[] | ReactNode[] = [entity.annotation];
+    let content: string[] = entity.annotation.split(/( )/g); // faster realisation don't work with unicode regex
 
-    libraryWords?.forEach((libraryWord) => {
-      const newContent = content.map((entry) => {
-        const regexp = new RegExp('(\\b' + libraryWord.word + '\\b)');
+    const libraryWordsMap =
+      libraryWords?.reduce((acc, libraryWord) => {
+        acc[libraryWord.word] = libraryWord.meaning;
 
-        const newEntry =
-          typeof entry !== 'string' ? entry : (entry as string).split(regexp);
+        return acc;
+      }, {} as { [word: string]: string }) ?? {};
 
-        return newEntry;
-      });
+    const parsedContent = content.map((word) => {
+      if (libraryWordsMap[word])
+        return <LibraryWordEntry word={word} meaning={libraryWordsMap[word]} />;
 
-      content = newContent.flat().map((entry) => {
-        if (entry === libraryWord.word)
-          return (
-            <LibraryWordEntry
-              word={libraryWord.word}
-              meaning={libraryWord.meaning}
-            />
-          );
-
-        return entry;
-      });
+      return word;
     });
 
-    return content;
+    return parsedContent;
   }, [entity.annotation, libraryWords]);
 
   return (
