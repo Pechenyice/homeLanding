@@ -20,7 +20,7 @@ export const Footer = () => {
             <div className={styles.data}>
               <H3>ул. Садовая, дом 55-57, литера А</H3>
               <H3 isMedium>+7 812 417-31-51</H3>
-              <H3 isMedium>info@semya.gugov.spb.ru</H3>
+              <H3 isMedium>semya@ksp.gov.spb.ru</H3>
             </div>
             <div className={styles.social}>
               <a target="_blank" href="https://vk.com/gimc_family">
