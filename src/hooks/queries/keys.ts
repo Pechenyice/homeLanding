@@ -24,6 +24,8 @@ export const getEntitiesYearsKey = 'entitiesYears';
 
 export const libraryWordsKey = 'libraryWords';
 
+export const statisticKey = 'statistic';
+
 export const getProjectKey = (id: string, isBest?: boolean) => [
   'project',
   id,

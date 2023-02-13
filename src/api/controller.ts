@@ -11,12 +11,20 @@ import {
   IRnsuFiltersResponse,
   ISocialResponse,
   ISociotekaEntitiesListResponse,
+  IStatsResponse,
 } from 'types/interfaces';
 import { aborts } from './aborts';
 import { API_ROUTES, DYNAMIC_API_ROUTES } from './config';
 import { safeFetch } from './wrapper';
 
 export const API = {
+  statistic: {
+    fetchAllStats(): Promise<IStatsResponse> {
+      const params = API_ROUTES.STATS;
+
+      return safeFetch(params.url, params.method, aborts.STATISTIC_GET_STATS);
+    },
+  },
   library: {
     fetchAllWords(): Promise<ILibraryWordsResponse> {
       const params = API_ROUTES.LIBRARY_WORDS;

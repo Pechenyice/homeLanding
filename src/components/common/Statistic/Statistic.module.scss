@@ -24,6 +24,35 @@
   width: 400px; 
 }
 
+.placeholder {
+  position: relative;
+  overflow: hidden;
+  width: 100px;
+  height: 60px;
+  border-radius: 6px;
+  background-color: var(--light-gray);
+ 
+  &__content {
+    position: absolute;
+    left: -45%;
+    height: 100%;
+    width: 45%;
+    background-image: linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    background-image: -moz-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    background-image: -webkit-linear-gradient(to left, rgba(251,251,251, .05), rgba(251,251,251, .3), rgba(251,251,251, .6), rgba(251,251,251, .3), rgba(251,251,251, .05));
+    animation: loading 2s infinite;
+  }
+}
+
+@keyframes loading {
+  0%{
+    left: -45%;
+  }
+  100%{
+    left: 100%;
+  }
+}
+
 .content {
   font-family: 'Commissioner Medium';
   font-style: normal;

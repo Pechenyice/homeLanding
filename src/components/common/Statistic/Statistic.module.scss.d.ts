@@ -4,6 +4,9 @@ interface CssExports {
   'back': string;
   'content': string;
   'flexBox': string;
+  'loading': string;
+  'placeholder': string;
+  'placeholder__content': string;
   'statistic': string;
   'wrapper': string;
 }

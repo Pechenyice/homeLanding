@@ -46,12 +46,21 @@ export interface ILibraryWord {
   meaning: string;
 }
 
+export interface IStats {
+  companies: number;
+  jobs: number;
+}
+
 export interface IQueriesResponse extends IResponseError {
   data: ISelectValue[] | null;
 }
 
 export interface ILibraryWordsResponse extends IResponseError {
   data: ILibraryWord[] | null;
+}
+
+export interface IStatsResponse extends IResponseError {
+  data: IStats | null;
 }
 
 export interface IRnsuFiltersResponse extends IResponseError {

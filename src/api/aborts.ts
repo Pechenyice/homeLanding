@@ -4,6 +4,8 @@ export const aborts = {
   ENTITIES_GET_CONTROLLER: new AbortController(),
 
   LIBRARY_GET_ALL_WORDS: new AbortController(),
+
+  STATISTIC_GET_STATS: new AbortController(),
 };
 
 export enum ABORT_CONTROLLER {
@@ -11,6 +13,7 @@ export enum ABORT_CONTROLLER {
   QUERIES_CATEGORIES_CONTROLLER = 'QUERIES_CATEGORIES_CONTROLLER',
   ENTITIES_GET_CONTROLLER = 'ENTITIES_GET_CONTROLLER',
   LIBRARY_GET_ALL_WORDS = 'LIBRARY_GET_ALL_WORDS',
+  STATISTIC_GET_STATS = 'STATISTIC_GET_STATS',
 }
 
 export function abortRequest(controller: ABORT_CONTROLLER) {

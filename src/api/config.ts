@@ -17,6 +17,11 @@ export const API_ROUTES = {
     url: `${API_PREFIX}/library`,
     method: EAPIMethod.GET,
   },
+
+  STATS: {
+    url: `${API_PREFIX}/stats/numbers`,
+    method: EAPIMethod.GET,
+  },
 };
 
 export const DYNAMIC_API_ROUTES = {
