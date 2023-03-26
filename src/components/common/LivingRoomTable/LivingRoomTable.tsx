@@ -5,6 +5,7 @@ import { IAPIEntitiesList } from 'types/entities';
 import { EEntity } from 'types/enums';
 import { LivingRoomCard } from '../LivingRoomCard/LivingRoomCard';
 import styles from './LivingRoomTable.module.scss';
+import { useQueryParams } from 'hooks/useQueryParams';
 
 type Props = {
   data: IAPIEntitiesList[];
@@ -23,6 +24,8 @@ export const LivingRoomTable = ({
   isLoading,
   onUpdatePage,
 }: Props) => {
+  const params = useQueryParams();
+
   const [localPageState, setLocalPageState] = useState(page);
 
   useEffect(() => {
@@ -66,7 +69,9 @@ export const LivingRoomTable = ({
     <div className={styles.table}>
       {data.map((elem) => (
         <LivingRoomCard
-          key={elem.id}
+          key={`${elem.id}_${elem.name}_${elem.company}_${Object.entries(params)
+            .map(([key, value]) => key + '-' + value)
+            .join('--')}`}
           className={styles.card}
           entityId={elem.id}
           image={elem.image ? '/storage/' + elem.image : null}

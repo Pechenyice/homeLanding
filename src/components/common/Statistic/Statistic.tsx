@@ -31,7 +31,7 @@ export const Statistic = () => {
                   <div className={styles.placeholder__content}></div>
                 </div>
               ) : (
-                stats?.jobs ?? '-'
+                stats?.jobs_count ?? '-'
               )}
             </div>
             <Text>Практик и решений</Text>
@@ -43,17 +43,35 @@ export const Statistic = () => {
                   <div className={styles.placeholder__content}></div>
                 </div>
               ) : (
-                stats?.companies ?? '-'
+                stats?.companies_count ?? '-'
               )}
             </div>
             <Text>Организаций</Text>
           </div>
-          {inputs.map((input) => (
-            <div key={input.description} className={styles.statistic}>
-              <div className={styles.content}>{input.content}</div>
-              <Text>{input.description}</Text>
+          <div className={styles.statistic}>
+            <div className={styles.content}>
+              {statsLoading ? (
+                <div className={styles.placeholder}>
+                  <div className={styles.placeholder__content}></div>
+                </div>
+              ) : (
+                stats?.best_jobs_count ?? '-'
+              )}
             </div>
-          ))}
+            <Text>Лучших практик</Text>
+          </div>
+          <div className={styles.statistic}>
+            <div className={styles.content}>
+              {statsLoading ? (
+                <div className={styles.placeholder}>
+                  <div className={styles.placeholder__content}></div>
+                </div>
+              ) : (
+                stats?.remote_format_jobs_count ?? '-'
+              )}
+            </div>
+            <Text>Практик в дистанционном формате</Text>
+          </div>
         </div>
       </Wrapper>
       <StatisticIcon className={styles.back} />

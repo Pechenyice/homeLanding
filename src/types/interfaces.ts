@@ -47,8 +47,10 @@ export interface ILibraryWord {
 }
 
 export interface IStats {
-  companies: number;
-  jobs: number;
+  companies_count: number;
+  jobs_count: number;
+  best_jobs_count: number;
+  remote_format_jobs_count: number;
 }
 
 export interface IQueriesResponse extends IResponseError {
