@@ -21,7 +21,7 @@ export const Header = () => {
           <Logos />
           <div className={styles.link} onClick={redirectToSystem}>
             <ProfileIcon />
-            <Text isMedium>Личный кабинет</Text>
+            <Text isMedium>Личный кабинет организации</Text>
           </div>
         </div>
       </Wrapper>
